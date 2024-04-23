@@ -9,8 +9,5 @@ php artisan config:cache
 echo "Caching routes..."
 php artisan route:cache
 
-echo "livewire publish asset"
-php artisan livewire:publish --assets
-
 # echo "Running migrations..."
 # php artisan migrate:fresh --seed --force
