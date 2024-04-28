@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PageController::class, 'index']);
+
+Route::get('/home', [PageController::class, 'index']);
+
+Route::get('/browse', [PageController::class, 'browse']);
+Route::get('/compare', [PageController::class, 'compare']);
+Route::get('/myProduct', [PageController::class, 'myProduct']);
 
 Route::get('/hello', function () {
     return "HELLO WORLD";
