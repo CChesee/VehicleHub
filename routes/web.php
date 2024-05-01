@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,14 @@ Route::get('/home', [PageController::class, 'index']);
 Route::get('/browse', [PageController::class, 'browse']);
 Route::get('/compare', [PageController::class, 'compare']);
 Route::get('/myProduct', [PageController::class, 'myProduct']);
+
+Route::get('/login', [PageController::class, 'login']);
+Route::get('/register', [PageController::class, 'regis']);
+Route::get('/recoveryNotify', [PageController::class, 'recoveryNotify']);
+
+Route::get('/test', function () {
+    return User::all();
+});
 
 Route::get('/hello', function () {
     return "HELLO WORLD";
