@@ -7,7 +7,7 @@
 @section('content')
     <div class="container mt-3">
 
-        <p>ini my product</p>
+        <p> ini my product testtt </p>
 
     </div>
 @endsection

@@ -13,20 +13,20 @@ return new class extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
-            $table->string('car_brand');
-            $table->string('car_name');
-            $table->string('car_type');
-            $table->string('car_milage');
-            $table->string('car_year_production');
-            $table->string('car_tax');
-            $table->string('car_service_fee');
-            $table->string('car_fuel_type');
-            $table->string('car_fuel_tank_capacity');
-            $table->string('car_fuel_compsumtion');
-            $table->string('car_transmition');
-            $table->string('car_seat_capacity');
-            $table->string('car_engine_capacity');
-            $table->string('car_status');
+            $table->string('vehicle_brand');
+            $table->string('vehicle_name');
+            $table->string('vehicle_type');
+            $table->string('vehicle_milage');
+            $table->string('vehicle_year_production');
+            $table->string('vehicle_tax');
+            $table->string('vehicle_service_fee');
+            $table->string('vehicle_fuel_type');
+            $table->string('vehicle_fuel_tank_capacity');
+            $table->string('vehicle_fuel_compsumtion');
+            $table->string('vehicle_transmition');
+            $table->string('vehicle_seat_capacity');
+            $table->string('vehicle_engine_capacity');
+            $table->string('vehicle_status');
             $table->unsignedBigInteger('price');
             $table->string('image');
             $table->timestamps();

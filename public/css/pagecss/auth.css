@@ -1,0 +1,19 @@
+.relog button{
+    background-color:#FFC107;
+    width: 200px;
+    font-weight: bold;
+    color: white;
+}
+
+.regist{
+      width: 100% !important;
+}
+
+.card{
+      border-radius: 1rem;
+      width: 85%;
+}
+
+.custom-link {
+    color: #FFCD37;
+}

@@ -20,7 +20,9 @@ class UserSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('admin123'),
             'phone' => '081234567890',
-            'recovery_word' => 'apaaja'
+            'location' => 'DKI Jakarta',
+            'recovery_question' => 'zzz',
+            'recovery_answer' => 'apaaja'
         ]);
 
     }

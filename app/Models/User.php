@@ -22,7 +22,9 @@ class User extends Authenticatable
         'email',
         'password',
         'phone',
-        'recovery_word'
+        'location',
+        'recovery_question',
+        'recovery_answer'
     ];
 
     /**

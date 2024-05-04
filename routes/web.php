@@ -16,16 +16,20 @@ use App\Models\User;
 */
 
 Route::get('/', [PageController::class, 'index']);
-
 Route::get('/home', [PageController::class, 'index']);
 
 Route::get('/browse', [PageController::class, 'browse']);
 Route::get('/compare', [PageController::class, 'compare']);
 Route::get('/myProduct', [PageController::class, 'myProduct']);
 
+Route::get('/register', [PageController::class, 'register']);
+Route::post('/register', [PageController::class, 'registerLogic']);
 Route::get('/login', [PageController::class, 'login']);
-Route::get('/register', [PageController::class, 'regis']);
-Route::get('/recoveryNotify', [PageController::class, 'recoveryNotify']);
+Route::post('/login', [PageController::class, 'loginLogic']);
+Route::get('/loginRecovery', [PageController::class, 'loginRecovery']);
+Route::post('/loginRecovery', [PageController::class, 'loginRecoveryLogic']);
+Route::get('/profile', [PageController::class, 'profile']);
+Route::get('/logout', [PageController::class, 'logout']);
 
 Route::get('/test', function () {
     return User::all();

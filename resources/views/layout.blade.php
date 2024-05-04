@@ -27,7 +27,6 @@
             </style>
     </head>
     <body class="">
-        {{-- <x-navbar/> --}}
         @include('components.navbar')
         <div>
             @yield('content')

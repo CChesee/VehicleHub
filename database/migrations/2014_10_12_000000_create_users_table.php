@@ -18,7 +18,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone');
-            $table->string('recovery_word');
+            $table->string('location');
+            $table->string('recovery_question');
+            $table->string('recovery_answer');
             $table->rememberToken();
             $table->timestamps();
         });
