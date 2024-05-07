@@ -27,7 +27,11 @@ class PageController extends Controller
     }
 
     public function myProduct(){
-        return view('page.myProduct');
+        return view('page.product.myProduct');
+    }
+
+    public function addProduct(){
+        return view ('page.product.addProduct');
     }
 
     public function login(){
@@ -107,8 +111,8 @@ class PageController extends Controller
         }
         else{
             return back()->with('errorlogin', 'Login Failed!');
+        }
     }
-}
 
 
     public function profile(){
