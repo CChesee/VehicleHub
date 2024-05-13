@@ -32,6 +32,7 @@ Route::get('/compare', [PageController::class, 'compare']);
 
 Route::get('/myProduct', [PageController::class, 'myProduct']);
 Route::get('/addProduct', [PageController::class, 'addProduct']);
+Route::post('/addProductLogic', [PageController::class, 'addProductLogic']);
 
 Route::get('/test', function () {
     return User::all();

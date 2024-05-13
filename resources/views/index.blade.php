@@ -101,9 +101,9 @@
                 </div>
                 <div class="col-md-3">
                     <div class="card my-3">
-                        <div class="card-body">
+                        <div class="card-body text-center">
                             <h5 class="card-title text-center" style="font-weight: bold;">Mobil EV</h5>
-                            <p class="card-text text-center">Icon</p>
+                            <img src="{{ asset('storage/app_image/iconElectricCar.png') }}" height="150" class="img-fluid mx-auto d-block" alt="Vehicle Image">
                             <a href="#" class="btn btn-primary d-block mx-auto" style="background-color: #ffc107;">View Categories</a>
                         </div>
                     </div>
@@ -111,9 +111,9 @@
 
                 <div class="col-md-3">
                     <div class="card my-3">
-                        <div class="card-body">
+                        <div class="card-body text-center">
                             <h5 class="card-title text-center" style="font-weight: bold;">LCGC</h5>
-                            <p class="card-text text-center">Icon</p>
+                            <img src="{{ asset('storage/app_image/lcgc.png') }}" height="150" class="img-fluid mx-auto d-block" alt="Vehicle Image">
                             <a href="#" class="btn btn-primary d-block mx-auto" style="background-color: #ffc107;">View Categories</a>
                         </div>
                     </div>
@@ -122,7 +122,7 @@
                     <div class="card my-3">
                         <div class="card-body">
                             <h5 class="card-title text-center" style="font-weight: bold;">SUV</h5>
-                            <p class="card-text text-center">Icon</p>
+                            <img src="{{ asset('storage/app_image/suv.png') }}" height="150" class="img-fluid mx-auto d-block" alt="Vehicle Image">
                             <a href="#" class="btn btn-primary d-block mx-auto" style="background-color: #ffc107;">View Categories</a>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                     <div class="card my-3">
                         <div class="card-body">
                             <h5 class="card-title text-center" style="font-weight: bold;">Hybrid</h5>
-                            <p class="card-text text-center">Icon</p>
+                            <img src="{{ asset('storage/app_image/hybrid.png') }}" height="150" class="img-fluid mx-auto d-block" alt="Vehicle Image">
                             <a href="#" class="btn btn-primary d-block mx-auto" style="background-color: #ffc107;">View Categories</a>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                     <div class="card my-3">
                         <div class="card-body">
                             <h5 class="card-title text-center" style="font-weight: bold;">Matic</h5>
-                            <p class="card-text text-center">Icon</p>
+                            <img src="{{ asset('storage/app_image/matic.png') }}" height="150" class="img-fluid mx-auto d-block" alt="Vehicle Image">
                             <a href="#" class="btn btn-primary d-block mx-auto" style="background-color: #ffc107;">View Categories</a>
                         </div>
                     </div>
@@ -149,7 +149,7 @@
                     <div class="card my-3">
                         <div class="card-body">
                             <h5 class="card-title text-center" style="font-weight: bold;">Moge</h5>
-                            <p class="card-text text-center">Icon</p>
+                            <img src="{{ asset('storage/app_image/moge.png') }}" height="150" class="img-fluid mx-auto d-block" alt="Vehicle Image">
                             <a href="#" class="btn btn-primary d-block mx-auto" style="background-color: #ffc107;">View Categories</a>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
                     <div class="card my-3">
                         <div class="card-body">
                             <h5 class="card-title" style="font-weight: bold;">Motor EV</h5>
-                            <p class="card-text text-center">Icon</p>
+                            <img src="{{ asset('storage/app_image/evbike.png') }}" height="150" class="img-fluid mx-auto d-block" alt="Vehicle Image">
                             <a href="#" class="btn btn-primary d-block mx-auto" style="background-color: #ffc107;">View Categories</a>
                         </div>
                     </div>
@@ -167,7 +167,7 @@
                     <div class="card my-3">
                         <div class="card-body">
                             <h5 class="card-title text-center" style="font-weight: bold;">Cub</h5>
-                            <p class="card-text text-center">Icon</p>
+                            <img src="{{ asset('storage/app_image/cub.png') }}" height="150" class="img-fluid mx-auto d-block" alt="Vehicle Image">
                             <a href="#" class="btn btn-primary d-block mx-auto" style="background-color: #ffc107;">View Categories</a>
                         </div>
                     </div>
@@ -182,7 +182,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-center" style="font-weight: bold;">Browse Vehicle</h5>
-                    <p class="card-text text-center">Icon</p>
+                    <img src="{{ asset('storage/app_image/searchicon.png') }}" height="200" class="img-fluid mx-auto d-block" alt="Vehicle Image">
                     <a href="/browse" class="btn btn-primary d-block mx-auto" style="background-color: #ffc107;">Browse Vehicle</a>
                 </div>
             </div>
@@ -192,7 +192,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-center" style="font-weight: bold;">My Product</h5>
-                    <p class="card-text text-center">Icon</p>
+                    <img src="{{ asset('storage/app_image/iklan.png') }}" height="200" class="img-fluid mx-auto d-block" alt="Vehicle Image">
                     <a href="/myProduct" class="btn btn-primary d-block mx-auto" style="background-color: #ffc107;">My Product</a>
                 </div>
             </div>
@@ -202,7 +202,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-center" style="font-weight: bold;">Service Kendaraan</h5>
-                    <p class="card-text text-center">Icon</p>
+                    <img src="{{ asset('storage/app_image/service.png') }}" height="200" class="img-fluid mx-auto d-block" alt="Vehicle Image">
                     <a href="#" class="btn btn-primary d-block mx-auto" style="background-color: #ffc107;">Service kendaraan</a>
                 </div>
             </div>

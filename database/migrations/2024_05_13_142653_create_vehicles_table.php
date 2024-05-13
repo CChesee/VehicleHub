@@ -1,18 +1,20 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\User;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(User::class);
             $table->string('vehicle_type');
             $table->string('vehicle_brand');
             $table->string('vehicle_name');
@@ -29,7 +31,6 @@ return new class extends Migration
             $table->unsignedBigInteger('vehicle_engine_capacity');
             $table->string('vehicle_status');
             $table->unsignedBigInteger('price');
-            $table->string('image');
             $table->timestamps();
         });
     }

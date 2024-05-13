@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Image;
+use App\Models\Vehicle;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class PageController extends Controller
@@ -24,14 +27,6 @@ class PageController extends Controller
 
     public function compare(){
         return view('page.compare');
-    }
-
-    public function myProduct(){
-        return view('page.product.myProduct');
-    }
-
-    public function addProduct(){
-        return view ('page.product.addProduct');
     }
 
     public function login(){
@@ -126,4 +121,67 @@ class PageController extends Controller
 
         return redirect('/');
     }
+
+    public function myProduct(){
+        $vehicles = Vehicle::all();
+        return view('page.product.myProduct', compact('vehicles'));
+    }
+
+    public function addProduct(){
+        return view ('page.product.addProduct');
+    }
+
+    public function addProductLogic(Request $request){
+        // Validate the request data
+        $request->validate([
+            'vehicle_type' => 'required',
+            'vehicle_brand' => 'required',
+            'vehicle_name' => 'required',
+            'vehicle_category' => 'required',
+            'vehicle_transmition' => 'required',
+            'vehicle_seat_capacity' => 'required',
+            'vehicle_engine_capacity' => 'required',
+            'vehicle_fuel_type' => 'required',
+            'vehicle_fuel_tank_capacity' => 'required',
+            'vehicle_fuel_compsumtion' => 'required',
+            'vehicle_milage' => 'required',
+            'vehicle_year_production' => 'required|numeric|max:' . date('Y'),
+            'vehicle_tax' => 'required',
+            'vehicle_service_fee' => 'required',
+            'price' => 'required',
+            'vehicle_status' => 'required',
+        ]);
+
+        // Get the authenticated user's ID
+        $user_id = Auth::id();
+
+        // Combine user ID with validated data
+        $validatedData = array_merge(['user_id' => $user_id], $request->all());
+
+        // Create new vehicle
+        $new_vehicle = Vehicle::create($validatedData);
+
+        // Handle image uploads if available
+
+        if ($request->has('images')) {
+            foreach ($request->file('images') as $image) {
+                // Move the image to the desired directory
+                $imageName = $validatedData['vehicle_name'].'-image-'.time().rand(1, 1000).'.'.$image->extension();
+                $image->move(public_path('vehicle_images'), $imageName);
+
+                // Create a new Image record for each uploaded image
+                Image::create([
+                    'vehicle_id' => $new_vehicle->id,
+                    'image' => $imageName
+                ]);
+            }
+        }
+
+
+        $request->flash('success', 'Success add new product!');
+
+        // Redirect to myProduct route
+        return redirect('/myProduct');
+    }
+
 }

@@ -6,16 +6,44 @@
 
 @section('content')
     <div class="container">
-        <div class="judul text-center fw-bolder mt-5">
-            <h2>Welcome Back!</h2>
-        </div>
-
         <div class="my-3 d-flex justify-content-end">
             <a style="background-color: #FFC107; color: black;" href="{{url('/addProduct')}}" class="btn ">Add New Vehicle</a>
         </div>
 
         <div class="judul text-center fw-bolder mt-5">
-            <h2>No Vehicle</h2>
+            <h2 class="mb-20" style="margin-bottom: 20px;">My Product</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Total Images</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php $i=1; @endphp
+
+                    @forelse ($vehicles as $vehicle)
+                        <tr>
+                            <td>{{ $i++; }}</td>
+                            <td>{{ $vehicle->vehicle_name }}</td>
+                            <td>{{ $vehicle->price }}</td>
+                            <td>{{ $vehicle->images->count() }}</td>
+                            <td>
+                                <button type="button" class="btn" style="background-color: #FFC107; color: black;" href="#">Edit</button>
+                                <button type="button" class="btn" style="background-color: #FFC107; color: black;" href="#">Preview</button>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="5">No Product</td>
+                        </tr>
+                    @endforelse
+
+                </tbody>
+            </table>
         </div>
 
         {{-- @foreach ($recipes as $recipe)
