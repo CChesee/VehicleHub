@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('vehicle_service_fee');
             $table->string('vehicle_fuel_type');
             $table->unsignedBigInteger('vehicle_fuel_tank_capacity');
-            $table->unsignedBigInteger('vehicle_fuel_compsumtion');
+            $table->unsignedBigInteger('vehicle_fuel_consumption');
             $table->string('vehicle_transmition');
             $table->unsignedBigInteger('vehicle_seat_capacity');
             $table->unsignedBigInteger('vehicle_engine_capacity');

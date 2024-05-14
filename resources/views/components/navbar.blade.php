@@ -38,16 +38,16 @@
         </div>
 
         @cannot('login-hide')
-            <a class="auth nav-link" href="{{url('login')}}"></i>Login</a>
+            <a class="auth nav-link bold-link" href="{{url('login')}}" style="color: black;"></i>Login</a>
         @endcannot
 
         @can('login-hide')
-                <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
+                <a class="nav-link bold-link active" aria-current="page" href="/profile" style="color: black;">Profile</a>
         @endcan
 
         @can('login-hide')
             <div class="auth">
-                <a class="nav-link" href="{{url('logout')}}">Logout</a>
+                <a class="nav-link bold-link" href="{{url('logout')}}" style="color: black;">Logout</a>
             </div>
         @endcan
 

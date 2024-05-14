@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
-use App\Models\User;
+use App\Http\Controllers\VehicleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,10 +31,15 @@ Route::get('/logout', [PageController::class, 'logout']);
 Route::get('/browse', [PageController::class, 'browse']);
 Route::get('/compare', [PageController::class, 'compare']);
 
-Route::get('/myProduct', [PageController::class, 'myProduct']);
-Route::get('/addProduct', [PageController::class, 'addProduct']);
-Route::post('/addProductLogic', [PageController::class, 'addProductLogic']);
+Route::get('/myProduct', [VehicleController::class, 'myProduct']);
+Route::get('/addProduct', [VehicleController::class, 'addProduct']);
+Route::post('/addProductLogic', [VehicleController::class, 'addProductLogic']);
+Route::get('/editProduct/{id}', [VehicleController::class, 'editProduct']);
+Route::get('/previewProduct/{id}', [VehicleController::class, 'previewProduct'])->name('vehicle.preview');
 
+
+
+//-------------------------------testing-------------------------------
 Route::get('/test', function () {
     return User::all();
 });

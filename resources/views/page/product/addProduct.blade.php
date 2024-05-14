@@ -86,9 +86,9 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="vehicle_fuel_compsumtion" class="form-label">Vehicle Full Consumption(KM/L)</label>
-                        <input type="number" class="form-control" id="vehicle_fuel_compsumtion" name="vehicle_fuel_compsumtion">
-                        <div id="emailHelp" class="form-text">{{$errors->first('vehicle_fuel_compsumtion')}}</div>
+                        <label for="vehicle_fuel_consumption" class="form-label">Vehicle Full Consumption(KM/L)</label>
+                        <input type="number" class="form-control" id="vehicle_fuel_consumption" name="vehicle_fuel_consumption">
+                        <div id="emailHelp" class="form-text">{{$errors->first('vehicle_fuel_consumption')}}</div>
                     </div>
 
                     <div class="mb-3">
@@ -152,7 +152,7 @@
             const vehicleCategorySelect = document.getElementById('vehicle_category');
 
             const brandsByType = {
-                Car: ['Acura', 'Alfa Romeo', 'Aston Martin', 'Audi', 'BAIC',
+                Car: ['', 'Acura', 'Alfa Romeo', 'Aston Martin', 'Audi', 'BAIC',
                         'BMW', 'BYD', 'Bentley', 'Buick', 'Chery',
                         'Chevrolet', 'Chrysler', 'Citroën', 'DFSK', 'Daihatsu',
                         'Datsun', 'Dodge', 'Ferrari', 'Ford', 'GMC',
@@ -166,7 +166,7 @@
                         'Tesla', 'Toyota', 'Volkswagen', 'Volvo', 'Wuling',
                         'Other'
                     ],
-                Motorcycle: ['Aprilia', 'BMW Motorrad', 'Benelli', 'CFMoto', 'Ducati',
+                Motorcycle: ['', 'Aprilia', 'BMW Motorrad', 'Benelli', 'CFMoto', 'Ducati',
                                 'Harley-Davidson', 'Honda', 'Husqvarna', 'KTM', 'Keeway',
                                 'Kawasaki', 'KYMCO', 'MV Agusta', 'Moto Guzzi', 'SYM (Sanyang)',
                                 'Suzuki', 'TVS', 'Triumph', 'Vespa (Piaggio)', 'Yamaha',
@@ -176,8 +176,8 @@
             };
 
             const categoriesByType = {
-                Car: ['SUV', 'Sedans', 'Electric'],
-                Motorcycle: ['Sport', 'Cub', 'Scooters']
+                Car: ['', 'Convertible', 'Coupe', 'Crossover', 'Electric Car', 'Hatchback', 'Hybrid', 'Minivan', 'LCGC', 'Pickup', 'Sedan', 'SUV', 'Wagon'],
+                Motorcycle: ['', 'Adventure Bike', 'Cruiser', 'Cub', 'Custom Bike', 'Dirt Bike', 'Electric Bike', 'Naked Bike', 'Touring Bike', 'Scooter', 'Sport Bike' ]
             };
 
             vehicleTypeSelect.addEventListener('change', function() {
@@ -193,7 +193,6 @@
                 brands.forEach(brand => {
                     const option = document.createElement('option');
                     option.text = brand;
-                    option.value = brand.toLowerCase(); // Optionally set value
                     vehicleBrandSelect.appendChild(option);
                 });
 
@@ -201,7 +200,6 @@
                 categories.forEach(category => {
                     const option = document.createElement('option');
                     option.text = category;
-                    option.value = category.toLowerCase(); // Optionally set value
                     vehicleCategorySelect.appendChild(option);
                 });
             });

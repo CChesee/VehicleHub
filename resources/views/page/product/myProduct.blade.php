@@ -7,18 +7,19 @@
 @section('content')
     <div class="container">
         <div class="my-3 d-flex justify-content-end">
-            <a style="background-color: #FFC107; color: black;" href="{{url('/addProduct')}}" class="btn ">Add New Vehicle</a>
+            <a style="background-color: #FFC107; color: black;" href="/addProduct" class="btn ">Add New Vehicle</a>
         </div>
 
         <div class="judul text-center fw-bolder mt-5">
             <h2 class="mb-20" style="margin-bottom: 20px;">My Product</h2>
-            <table class="table">
+            <table class="table mt-5" style="border: 1px solid black;">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Price</th>
                         <th scope="col">Total Images</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -29,11 +30,16 @@
                         <tr>
                             <td>{{ $i++; }}</td>
                             <td>{{ $vehicle->vehicle_name }}</td>
-                            <td>{{ $vehicle->price }}</td>
+                            <td>Rp. {{ number_format($vehicle->price, 0, ',', '.') }}</td>
                             <td>{{ $vehicle->images->count() }}</td>
+                            <td>{{ $vehicle->vehicle_status }}</td>
                             <td>
-                                <button type="button" class="btn" style="background-color: #FFC107; color: black;" href="#">Edit</button>
-                                <button type="button" class="btn" style="background-color: #FFC107; color: black;" href="#">Preview</button>
+                                <div class="text-center">
+                                    <a style="background-color: #FFC107; color: black;" href="{{url('editProduct/'.$vehicle->id)}}" class="btn">Edit Vehicle</a>
+                                    <a style="background-color: #FFC107; color: black;" href={{ route('vehicle.preview', $vehicle->id) }} class="btn">Preview Vehicle</a>
+
+                                    <a style="background-color: #FFC107; color: black;" href="#" class="btn">Delete Vehicle</a>
+                                </div>
                             </td>
                         </tr>
                     @empty
@@ -45,39 +51,6 @@
                 </tbody>
             </table>
         </div>
-
-        {{-- @foreach ($recipes as $recipe)
-            <div class="body d-flex flex-row align-items-center border border-dark shadow p-3 mb-5 bg-body rounded mx-auto">
-                <div class="img px-3 py-3">
-                    <img src="{{ asset('storage/recipe/'. $recipe->image) }}" alt="" width="300px" height="300px">
-                </div>
-
-                <div class="isi d-flex flex-column">
-                    <div class="">
-                        <h3>{{$recipe->title}}</h3>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span>By {{$recipe->author}}</span>
-                    </div>
-
-                    <hr class="hr hr-blurry" />
-
-                    <div class="d-flex flex-col ">
-                        <a href="{{url('updateRecipe/'.$recipe->id)}}" style="background-color: #F9DB6D; color: black;" class="btn">
-                            Edit Recipe
-                        </a>
-                        <form action="{{url('deleteRecipe/'.$recipe->id)}}" method="POST">
-                            @csrf
-                            <a class="ms-3">
-                                <button class="btn" type="submit" style="background-color: #F9DB6D; color: black;">
-                                    Delete Recipe
-                                </button>
-                            </a>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        @endforeach --}}
 
     </div>
 @endsection
