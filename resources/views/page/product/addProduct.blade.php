@@ -126,7 +126,12 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="files" class="form-label">Image</label>
+                        <label for="files" class="form-label">Cover Image</label>
+                        <input type="file" name="vehicle_cover_image" class="form-control" accept="image/*" >
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="files" class="form-label">Detail Image</label>
                         <input type="file" name="images[]" class="form-control" accept="image/*"  multiple>
                     </div>
 

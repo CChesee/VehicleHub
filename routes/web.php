@@ -4,6 +4,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\VehicleController;
+use App\Models\Vehicle;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,8 @@ Route::get('/myProduct', [VehicleController::class, 'myProduct']);
 Route::get('/addProduct', [VehicleController::class, 'addProduct']);
 Route::post('/addProductLogic', [VehicleController::class, 'addProductLogic']);
 Route::get('/editProduct/{id}', [VehicleController::class, 'editProduct']);
+// Route::post('/editProduct/{id}', [VehicleController::class, 'editProductLogic', $id])->name('editProduct');
+Route::post('/deleteProduct/{id}', [VehicleController::class, 'deleteProduct']);
 Route::get('/previewProduct/{id}', [VehicleController::class, 'previewProduct'])->name('vehicle.preview');
 
 

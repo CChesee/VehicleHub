@@ -6,7 +6,6 @@
 
 @section('content')
 
-<body>
   <div class="container-fluid">
     <div class="row">
       <!-- Left Side - Search Bar and Filtering Options -->
@@ -45,99 +44,31 @@
       <!-- Right Side - Vehicle Cards -->
       <div class="col-md-9">
         <h1>Vehicle Catalog</h1>
-        <div class="card d-flex flex-row align-items-center">
-          <img src="https://via.placeholder.com/150" class="card-img-top w-25" alt="Vehicle 1">
-          <div class="card-body">
-            <h1 class="nama-kendaraan">Vehicle 1</h1>
-            <h5 class="card-text">Kilometers: 10000 km</h5>
-            <h2 class="card-text">Rp. 200.000.000</h2>
-            <div class="d-flex justify-content-between">
-              <a href="#" class="btn btn-primary mr-2" style="background-color: #ffc107;">Check Details</a>
-              <a href="#" class="btn btn-secondary">Button 2</a>
+        @foreach ($vehicles as $vehicle)
+        <div class="card d-flex flex-row align-items-center mb-3">
+            {{-- <img src="https://via.placeholder.com/150" class="card-img-top w-25" alt="Vehicle 1"> --}}
+            {{-- <img src="/vehicle_images/{{ $vehicle->vehicle_cover_image }}" class="card-img-top" style="height: 200px; width:300px object-fit: cover;"> --}}
+
+            <img src="/storage/vehicle_images/{{ $vehicle->vehicle_cover_image }}" class="card-img-top" style="height: 200px; width: 300px; object-fit: cover;">
+
+            <div class="card-body">
+                <h1 class="nama-kendaraan">{{ $vehicle->vehicle_name}}</h1>
+                <h5 class="card-text">Kilometers: {{ $vehicle->vehicle_milage }}</h5>
+                <h2 class="card-text">Rp. {{ number_format($vehicle->price, 0, ',', '.') }}</h2>
+                <div class="d-flex justify-content-between">
+                <a href="#" class="btn btn-primary mr-2" style="background-color: #ffc107;">Check Details</a>
+                <a href="#" class="btn btn-secondary">Button 2</a>
+                </div>
             </div>
-          </div>
         </div>
 
-        <div class="card d-flex flex-row align-items-center">
-          <img src="https://via.placeholder.com/150" class="card-img-top w-25" alt="Vehicle 2">
-          <div class="card-body">
-            <h1 class="nama-kendaraan">Vehicle 2</h1>
-            <h5 class="card-text">Kilometers: 2000 km</h5>
-            <h2 class="card-text">Rp. 400.000.000</h2>
-            <div class="d-flex justify-content-between">
-              <a href="#" class="btn btn-primary mr-2" style="background-color: #ffc107;">Check Details</a>
-              <a href="#" class="btn btn-secondary">Button 2</a>
-            </div>
-          </div>
+        @endforeach
 
-        </div>
-        <div class="card d-flex flex-row align-items-center">
-          <img src="https://via.placeholder.com/150" class="card-img-top w-25" alt="Vehicle 2">
-          <div class="card-body">
-            <h1 class="nama-kendaraan">Vehicle 3</h1>
-            <h5 class="card-text">Kilometers: 22000 km</h5>
-            <h2 class="card-text">Rp. 500.000.000</h2>
-            <div class="d-flex justify-content-between">
-              <a href="#" class="btn btn-primary mr-2" style="background-color: #ffc107;">Check Details</a>
-              <a href="#" class="btn btn-secondary">Button 2</a>
-            </div>
-          </div>
 
-        </div>
-        <div class="card d-flex flex-row align-items-center">
-          <img src="https://via.placeholder.com/150" class="card-img-top w-25" alt="Vehicle 2">
-          <div class="card-body">
-            <h1 class="nama-kendaraan">Vehicle 4</h1>
-            <h5 class="card-text">Kilometers: 12000 km</h5>
-            <h2 class="card-text">Rp. 100.000.000</h2>
-            <div class="d-flex justify-content-between">
-              <a href="#" class="btn btn-primary mr-2" style="background-color: #ffc107;">Check Details</a>
-              <a href="#" class="btn btn-secondary">Button 2</a>
-            </div>
-          </div>
 
-        </div>
-        <div class="card d-flex flex-row align-items-center">
-          <img src="https://via.placeholder.com/150" class="card-img-top w-25" alt="Vehicle 2">
-          <div class="card-body">
-            <h1 class="nama-kendaraan">Vehicle 5</h1>
-            <h5 class="card-text">Kilometers: 112000 km</h5>
-            <h2 class="card-text">Rp. 300.000.000</h2>
-            <div class="d-flex justify-content-between">
-              <a href="#" class="btn btn-primary mr-2" style="background-color: #ffc107;">Check Details</a>
-              <a href="#" class="btn btn-secondary">Button 2</a>
-            </div>
-          </div>
-        </div>
-        <!-- Add more cards for other vehicles -->
       </div>
     </div>
   </div>
-</body>
-
-
-    {{-- <div class="container mt-3">
-
-        <p>ini browse</p>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-
-    </div> --}}
 @endsection
 
 <script>

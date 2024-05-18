@@ -14,15 +14,25 @@ use Illuminate\Support\Facades\Hash;
 class PageController extends Controller
 {
     public function index(){
-        return view('index');
+        $vehicles = Vehicle::all();
+        // $images = $vehicles->images;
+
+        return view('index', compact('vehicles'));
     }
 
     public function home(){
-        return view('index');
+        $vehicles = Vehicle::all();
+        // $images = $vehicles->images;
+
+        return view('index', compact('vehicles'));
     }
 
+
     public function browse(){
-        return view('page.browse');
+        $vehicles = Vehicle::all();
+        // $images = $vehicles->images;
+
+        return view('page.browse', compact('vehicles'));
     }
 
     public function compare(){

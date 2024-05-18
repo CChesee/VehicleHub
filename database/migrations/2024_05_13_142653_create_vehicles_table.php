@@ -31,6 +31,7 @@ return new class extends Migration
             $table->unsignedBigInteger('vehicle_engine_capacity');
             $table->string('vehicle_status');
             $table->unsignedBigInteger('price');
+            $table->string('vehicle_cover_image');
             $table->timestamps();
         });
     }

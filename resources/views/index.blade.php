@@ -15,7 +15,21 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="row">
-                        <div class="col-md-3">
+                        @foreach ($vehicles as $vehicle)
+                            <div class="col-md-3">
+                                <div class="card">
+                                    {{-- <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Vehicle Image"> --}}
+                                    <img src="/storage/vehicle_images/{{ $vehicle->vehicle_cover_image }}" class="card-img-top" style="height: 200px; width:300px object-fit: cover;">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="font-weight: bold;">{{ $vehicle->vehicle_name}}</h5>
+                                        <p class="card-text">Rp. {{ number_format($vehicle->price, 0, ',', '.') }}</p>
+                                        <p class="card-text">{{ $vehicle->vehicle_milage }} KM</p>
+                                        <a href="#" class="btn btn-primary" style="background-color: #ffc107;">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                        {{-- <div class="col-md-3">
                             <div class="card">
                                 <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Vehicle Image">
                                 <div class="card-body">
@@ -25,43 +39,7 @@
                                     <a href="#" class="btn btn-primary" style="background-color: #ffc107;">View Details</a>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="card">
-                                <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Vehicle Image">
-                                <div class="card-body">
-                                    <h5 class="card-title" style="font-weight: bold;">2017 Suzuki Ertiga</h5>
-                                    <p class="card-text">Rp. 90.000.000</p>
-                                    <p class="card-text">80000 km</p>
-                                    <a href="#" class="btn btn-primary" style="background-color: #ffc107;">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="card">
-                                <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Vehicle Image">
-                                <div class="card-body">
-                                    <h5 class="card-title" style="font-weight: bold;">2019 Honda Brio Satya</h5>
-                                    <p class="card-text">Rp. 130.000.000</p>
-                                    <p class="card-text">30000 km</p>
-                                    <a href="#" class="btn btn-primary" style="background-color: #ffc107;">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="card">
-                                <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Vehicle Image">
-                                <div class="card-body">
-                                    <h5 class="card-title" style="font-weight: bold;">2018 Toyota Calya</h5>
-                                    <p class="card-text">Rp. 88.000.000</p>
-                                    <p class="card-text">60000 km</p>
-                                    <a href="#" class="btn btn-primary" style="background-color: #ffc107;">View Details</a>
-                                </div>
-                            </div>
-                        </div>
+                        </div>--}}
                     </div>
                 </div>
                 <div class="carousel-item">

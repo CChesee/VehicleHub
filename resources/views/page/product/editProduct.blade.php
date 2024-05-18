@@ -124,11 +124,16 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="files" class="form-label" style="color: red;">Please Reupload Cover Image</label>
+                        <input type="file" name="vehicle_cover_image" class="form-control" accept="image/*" >
+                    </div>
+
+                    <div class="mb-3">
                         <label for="files" class="form-label" style="color: red;">Please Reupload Image</label>
                         <input type="file" name="images[]" class="form-control" accept="image/*"  multiple>
                     </div>
 
-                    <div class="mb-3" style="display: none;">
+                    <div class="mb-3">
                         <label class="form-label" for="vehicle_status">Status</label>
                         <select class="form-control form-control" id="vehicle_status" name="vehicle_status">
                             <option value="Available" {{ $vehicle->vehicle_status == 'Available' ? 'selected' : '' }}>Available</option>
@@ -136,9 +141,13 @@
                         </select>
                     </div>
 
-                    <div class="add d-flex justify-content-center mt-5 mb-3">
+                    {{-- <div class="add d-flex justify-content-center mt-5 mb-3">
                         <button type="submit" class="btn btn-warning" style="background-color: #FFC107; color: black;">Submit</button>
-                    </div>
+                    </div> --}}
+                    {{-- <form action="{{ route('editProduct', $vehicle->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf  <button type="submit" class="btn btn-warning" style="background-color: #FFC107; color: black;">Submit</button>
+                      </form> --}}
+
                 </form>
             </div>
         </div>

@@ -15,10 +15,9 @@
             <table class="table mt-5" style="border: 1px solid black;">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">No</th>
                         <th scope="col">Name</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Total Images</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -31,14 +30,11 @@
                             <td>{{ $i++; }}</td>
                             <td>{{ $vehicle->vehicle_name }}</td>
                             <td>Rp. {{ number_format($vehicle->price, 0, ',', '.') }}</td>
-                            <td>{{ $vehicle->images->count() }}</td>
                             <td>{{ $vehicle->vehicle_status }}</td>
                             <td>
-                                <div class="text-center">
+                                <div>
                                     <a style="background-color: #FFC107; color: black;" href="{{url('editProduct/'.$vehicle->id)}}" class="btn">Edit Vehicle</a>
                                     <a style="background-color: #FFC107; color: black;" href={{ route('vehicle.preview', $vehicle->id) }} class="btn">Preview Vehicle</a>
-
-                                    <a style="background-color: #FFC107; color: black;" href="#" class="btn">Delete Vehicle</a>
                                 </div>
                             </td>
                         </tr>

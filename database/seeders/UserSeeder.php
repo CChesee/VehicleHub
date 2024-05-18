@@ -25,5 +25,15 @@ class UserSeeder extends Seeder
             'recovery_answer' => 'apaaja'
         ]);
 
+        DB::table('users')->insert([
+            'name' => 'Jojo',
+            'email' => 'jojo@gmail.com',
+            'password' => Hash::make('test1234'),
+            'phone' => '081234123412',
+            'location' => 'Banten',
+            'recovery_question' => 'zzz',
+            'recovery_answer' => 'apaaja'
+        ]);
+
     }
 }
