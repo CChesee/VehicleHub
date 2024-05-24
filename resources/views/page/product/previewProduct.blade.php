@@ -43,6 +43,12 @@
                 <tbody>
                     <tbody>
                         <tr>
+                            <td>Vehicle Location</td>
+                            <td>|</td>
+                            <td>{{ $vehicles->vehicle_location }}</td>
+                        </tr>
+
+                        <tr>
                             <td>Type</td>
                             <td>|</td>
                             <td>{{ $vehicles->vehicle_type }}</td>

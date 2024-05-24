@@ -12,10 +12,11 @@
 
         <div class="judul text-center fw-bolder mt-5">
             <h2 class="mb-20" style="margin-bottom: 20px;">My Product</h2>
-            <table class="table mt-5" style="border: 1px solid black;">
+            <table class="table mt-5">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
+                        <th scope="col">Thumbnail</th>
                         <th scope="col">Name</th>
                         <th scope="col">Price</th>
                         <th scope="col">Status</th>
@@ -28,6 +29,7 @@
                     @forelse ($vehicles as $vehicle)
                         <tr>
                             <td>{{ $i++; }}</td>
+                            <td><img src="/storage/vehicle_images/{{ $vehicle->vehicle_cover_image }}" class="card-img-top" style="height: 200px; width: 300px; object-fit: cover;"></td>
                             <td>{{ $vehicle->vehicle_name }}</td>
                             <td>Rp. {{ number_format($vehicle->price, 0, ',', '.') }}</td>
                             <td>{{ $vehicle->vehicle_status }}</td>

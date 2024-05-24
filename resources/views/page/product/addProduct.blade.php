@@ -18,6 +18,51 @@
                     </div>
 
                     <div class="mb-3">
+                        <label class="form-label" for="vehicle_location">Vehicle Location</label>
+                        <select class="form-control form-control" id="vehicle_location" name="vehicle_location">
+                            <option value=""> </option>
+                            <option value="Nanggroe Aceh Darussalam">Nanggroe Aceh Darussalam</option>
+                            <option value="Sumatera Utara">Sumatera Utara</option>
+                            <option value="Sumatera Selatan">Sumatera Selatan</option>
+                            <option value="Sumatera Barat">Sumatera Barat</option>
+                            <option value="Bengkulu">Bengkulu</option>
+                            <option value="Riau">Riau</option>
+                            <option value="Kepulauan Riau">Kepulauan Riau</option>
+                            <option value="Jambi">Jambi</option>
+                            <option value="Lampung">Lampung</option>
+                            <option value="Bangka Belitung">Bangka Belitung</option>
+                            <option value="Kalimantan Barat">Kalimantan Barat</option>
+                            <option value="Kalimantan Timur">Kalimantan Timur</option>
+                            <option value="Kalimantan Selatan">Kalimantan Selatan</option>
+                            <option value="Kalimantan Tengah">Kalimantan Tengah</option>
+                            <option value="Kalimantan Utara">Kalimantan Utara</option>
+                            <option value="Banten">Banten</option>
+                            <option value="DKI Jakarta">DKI Jakarta</option>
+                            <option value="Jawa Barat">Jawa Barat</option>
+                            <option value="Jawa Tengah">Jawa Tengah</option>
+                            <option value="Daerah Istimewa Yogyakarta">Daerah Istimewa Yogyakarta</option>
+                            <option value="Jawa Timur">Jawa Timur</option>
+                            <option value="Bali">Bali</option>
+                            <option value="Nusa Tenggara Timur">Nusa Tenggara Timur</option>
+                            <option value="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
+                            <option value="Gorontalo">Gorontalo</option>
+                            <option value="Sulawesi Barat">Sulawesi Barat</option>
+                            <option value="Sulawesi Tengah">Sulawesi Tengah</option>
+                            <option value="Sulawesi Utara">Sulawesi Utara</option>
+                            <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
+                            <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+                            <option value="Maluku Utara">Maluku Utara</option>
+                            <option value="Maluku">Maluku</option>
+                            <option value="Papua Barat">Papua Barat</option>
+                            <option value="Papua">Papua</option>
+                            <option value="Papua Tengah">Papua Tengah</option>
+                            <option value="Papua Pegunungan">Papua Pegunungan</option>
+                            <option value="Papua Selatan">Papua Selatan</option>
+                            <option value="Papua Barat Daya">Papua Barat Daya</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
                         <label class="form-label" for="vehicle_type">Vehicle Type</label>
                         <select class="form-control form-control" id="vehicle_type" name="vehicle_type">
                             <option value=" "> </option>
@@ -126,13 +171,17 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="files" class="form-label">Cover Image</label>
+                        <label for="files" class="form-label">Thumbnail Image</label>
                         <input type="file" name="vehicle_cover_image" class="form-control" accept="image/*" >
                     </div>
 
                     <div class="mb-3">
-                        <label for="files" class="form-label">Detail Image</label>
+                        <label for="files" class="form-label">Detail Image(Can be more than 1)</label>
                         <input type="file" name="images[]" class="form-control" accept="image/*"  multiple>
+                    </div>
+
+                    <div class="mb-3">
+                        <h3 style="color: red;">Please remember that once you have submitted, the image cannot be changed again</h3>
                     </div>
 
                     <div class="mb-3" style="display: none;">
@@ -142,7 +191,7 @@
                         </select>
                     </div>
 
-                    <div class="add d-flex justify-content-center mt-5 mb-3">
+                    <div class="add d-flex justify-content-center mt-2 mb-3">
                         <button type="submit" class="btn btn-warning" style="background-color: #FFC107; color: black;">Submit</button>
                     </div>
                 </form>

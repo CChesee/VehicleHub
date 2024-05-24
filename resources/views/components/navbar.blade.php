@@ -30,10 +30,6 @@
                     </li>
                 @endcan
 
-                <li class="nav-item">
-                    <a class="nav-link bold-link" href="#">Book Service</a>
-                </li>
-
             </ul>
         </div>
 

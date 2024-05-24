@@ -8,29 +8,64 @@ use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class PageController extends Controller
 {
-    public function index(){
-        $vehicles = Vehicle::all();
-        // $images = $vehicles->images;
+    public function index()
+    {
+        $vehicles = Vehicle::where('vehicle_status', 'Available')->with('user')->get();
 
         return view('index', compact('vehicles'));
     }
+
 
     public function home(){
-        $vehicles = Vehicle::all();
+        $vehicles = Vehicle::where('vehicle_status', 'Available')->with('user')->get();
         // $images = $vehicles->images;
 
         return view('index', compact('vehicles'));
     }
 
 
-    public function browse(){
-        $vehicles = Vehicle::all();
-        // $images = $vehicles->images;
+    // public function browse(){
+    //     $vehicles = Vehicle::where('vehicle_status', 'Available')->get();
+    //     return view('page.browse', compact('vehicles'));
+    // }
+    public function browse(Request $request)
+    {
+        $userLocation = $request->get('user_location');
+
+        $filters = $request->all(); // Get all filter parameters from the request
+
+        $vehiclesQuery = Vehicle::where('vehicle_status', 'Available'); // Base query
+
+        // Apply filters based on user selections (if any)
+        if (isset($filters['vehicle_name']) && $filters['vehicle_name'] != '') {
+            $vehiclesQuery->where('vehicle_name', 'like', "%{$filters['vehicle_name']}%");
+        }
+        if (isset($filters['vehicle_type']) && $filters['vehicle_type'] != '') {
+            $vehiclesQuery->where('vehicle_type', $filters['vehicle_type']);
+        }
+        if (isset($filters['vehicle_brand']) && $filters['vehicle_brand'] != '') {
+            $vehiclesQuery->where('vehicle_brand', $filters['vehicle_brand']);
+        }
+        if (isset($filters['vehicle_category']) && $filters['vehicle_category'] != '') {
+            $vehiclesQuery->where('vehicle_category', $filters['vehicle_category']);
+        }
+        if (isset($filters['vehicle_fuel_type']) && $filters['vehicle_fuel_type'] != '') {
+            $vehiclesQuery->where('vehicle_fuel_type', $filters['vehicle_fuel_type']);
+        }
+        if (isset($filters['vehicle_transmition']) && $filters['vehicle_transmition'] != '') {
+            $vehiclesQuery->where('vehicle_transmition', $filters['vehicle_transmition']);
+        }
+        if (isset($filters['vehicle_location']) && $filters['vehicle_location'] != '') {
+            $vehiclesQuery->where('vehicle_location', $filters['vehicle_location']);
+        }
+
+        $vehicles = $vehiclesQuery->get(); // Fetch filtered vehicles
 
         return view('page.browse', compact('vehicles'));
     }
@@ -119,9 +154,33 @@ class PageController extends Controller
         }
     }
 
-
     public function profile(){
-        return view('page.profile');
+        $user = Auth::user();
+        return view('page.profile', compact('user'));
+    }
+
+    public function editProfile(){
+        $user = Auth::user();
+        return view('page.editProfile', compact('user'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'phone' => 'nullable|string|max:15',
+            'location' => 'nullable|string|max:255',
+        ]);
+
+        $user = Auth::user();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->phone = $request->input('phone');
+        $user->location = $request->input('location');
+        $user->save();
+
+        return redirect()->route('profile.show')->with('success', 'Profile updated successfully');
     }
 
     public function logout(Request $request){

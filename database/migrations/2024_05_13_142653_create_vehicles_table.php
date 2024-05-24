@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('vehicle_brand');
             $table->string('vehicle_name');
             $table->string('vehicle_category');
+            $table->string('vehicle_location');
             $table->unsignedBigInteger('vehicle_milage');
             $table->string('vehicle_year_production');
             $table->unsignedBigInteger('vehicle_tax');

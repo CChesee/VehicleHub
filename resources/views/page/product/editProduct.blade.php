@@ -18,9 +18,54 @@
                     </div>
 
                     <div class="mb-3">
+                        <label class="form-label" for="vehicle_location">Vehicle Location</label>
+                        <select class="form-control form-control" id="vehicle_location" name="vehicle_location">
+                            <option value=""> </option>
+                            <option value="Nanggroe Aceh Darussalam" {{ $vehicle->vehicle_location == 'Nanggroe Aceh Darussalam' ? 'selected' : '' }}>Nanggroe Aceh Darussalam</option>
+                            <option value="Sumatera Utara" {{ $vehicle->vehicle_location == 'Sumatera Utara' ? 'selected' : '' }}>Sumatera Utara</option>
+                            <option value="Sumatera Selatan" {{ $vehicle->vehicle_location == 'Sumatera Selatan' ? 'selected' : '' }}>Sumatera Selatan</option>
+                            <option value="Sumatera Barat" {{ $vehicle->vehicle_location == 'Sumatera Barat' ? 'selected' : '' }}>Sumatera Barat</option>
+                            <option value="Bengkulu" {{ $vehicle->vehicle_location == 'Bengkulu' ? 'selected' : '' }}>Bengkulu</option>
+                            <option value="Riau" {{ $vehicle->vehicle_location == 'Riau' ? 'selected' : '' }}>Riau</option>
+                            <option value="Kepulauan Riau" {{ $vehicle->vehicle_location == 'Kepulauan Riau' ? 'selected' : '' }}>Kepulauan Riau</option>
+                            <option value="Jambi" {{ $vehicle->vehicle_location == 'Jambi' ? 'selected' : '' }}>Jambi</option>
+                            <option value="Lampung" {{ $vehicle->vehicle_location == 'Lampung' ? 'selected' : '' }}>Lampung</option>
+                            <option value="Bangka Belitung" {{ $vehicle->vehicle_location == 'Bangka Belitung' ? 'selected' : '' }}>Bangka Belitung</option>
+                            <option value="Kalimantan Barat" {{ $vehicle->vehicle_location == 'Kalimantan Barat' ? 'selected' : '' }}>Kalimantan Barat</option>
+                            <option value="Kalimantan Timur" {{ $vehicle->vehicle_location == 'Kalimantan Timur' ? 'selected' : '' }}>Kalimantan Timur</option>
+                            <option value="Kalimantan Selatan" {{ $vehicle->vehicle_location == 'Kalimantan Selatan' ? 'selected' : '' }}>Kalimantan Selatan</option>
+                            <option value="Kalimantan Tengah" {{ $vehicle->vehicle_location == 'Kalimantan Tengah' ? 'selected' : '' }}>Kalimantan Tengah</option>
+                            <option value="Kalimantan Utara" {{ $vehicle->vehicle_location == 'Kalimantan Utara' ? 'selected' : '' }}>Kalimantan Utara</option>
+                            <option value="Banten" {{ $vehicle->vehicle_location == 'Banten' ? 'selected' : '' }}>Banten</option>
+                            <option value="DKI Jakarta" {{ $vehicle->vehicle_location == 'DKI Jakarta' ? 'selected' : '' }}>DKI Jakarta</option>
+                            <option value="Jawa Barat" {{ $vehicle->vehicle_location == 'Jawa Barat' ? 'selected' : '' }}>Jawa Barat</option>
+                            <option value="Jawa Tengah" {{ $vehicle->vehicle_location == 'Jawa Tengah' ? 'selected' : '' }}>Jawa Tengah</option>
+                            <option value="Daerah Istimewa Yogyakarta" {{ $vehicle->vehicle_location == 'Daerah Istimewa Yogyakarta' ? 'selected' : '' }}>Daerah Istimewa Yogyakarta</option>
+                            <option value="Jawa Timur" {{ $vehicle->vehicle_location == 'Jawa Timur' ? 'selected' : '' }}>Jawa Timur</option>
+                            <option value="Bali" {{ $vehicle->vehicle_location == 'Bali' ? 'selected' : '' }}>Bali</option>
+                            <option value="Nusa Tenggara Timur" {{ $vehicle->vehicle_location == 'Nusa Tenggara Timur' ? 'selected' : '' }}>Nusa Tenggara Timur</option>
+                            <option value="Nusa Tenggara Barat" {{ $vehicle->vehicle_location == 'Nusa Tenggara Barat' ? 'selected' : '' }}>Nusa Tenggara Barat</option>
+                            <option value="Gorontalo" {{ $vehicle->vehicle_location == 'Gorontalo' ? 'selected' : '' }}>Gorontalo</option>
+                            <option value="Sulawesi Barat" {{ $vehicle->vehicle_location == 'Sulawesi Barat' ? 'selected' : '' }}>Sulawesi Barat</option>
+                            <option value="Sulawesi Tengah" {{ $vehicle->vehicle_location == 'Sulawesi Tengah' ? 'selected' : '' }}>Sulawesi Tengah</option>
+                            <option value="Sulawesi Utara" {{ $vehicle->vehicle_location == 'Sulawesi Utara' ? 'selected' : '' }}>Sulawesi Utara</option>
+                            <option value="Sulawesi Tenggara" {{ $vehicle->vehicle_location == 'Sulawesi Tenggara' ? 'selected' : '' }}>Sulawesi Tenggara</option>
+                            <option value="Sulawesi Selatan" {{ $vehicle->vehicle_location == 'Sulawesi Selatan' ? 'selected' : '' }}>Sulawesi Selatan</option>
+                            <option value="Maluku Utara" {{ $vehicle->vehicle_location == 'Maluku Utara' ? 'selected' : '' }}>Maluku Utara</option>
+                            <option value="Maluku" {{ $vehicle->vehicle_location == 'Maluku' ? 'selected' : '' }}>Maluku</option>
+                            <option value="Papua Barat" {{ $vehicle->vehicle_location == 'Papua Barat' ? 'selected' : '' }}>Papua Barat</option>
+                            <option value="Papua" {{ $vehicle->vehicle_location == 'Papua' ? 'selected' : '' }}>Papua</option>
+                            <option value="Papua Tengah" {{ $vehicle->vehicle_location == 'Papua Tengah' ? 'selected' : '' }}>Papua Tengah</option>
+                            <option value="Papua Pegunungan" {{ $vehicle->vehicle_location == 'Papua Pegunungan' ? 'selected' : '' }}>Papua Pegunungan</option>
+                            <option value="Papua Selatan" {{ $vehicle->vehicle_location == 'Papua Selatan' ? 'selected' : '' }}>Papua Selatan</option>
+                            <option value="Papua Barat Daya" {{ $vehicle->vehicle_location == 'Papua Barat Daya' ? 'selected' : '' }}>Papua Barat Daya</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
                         <label class="form-label" for="vehicle_type">Vehicle Type</label>
                         <select class="form-control form-control" id="vehicle_type" name="vehicle_type">
-                            <option value=" "> </option>
+                            <option value=""> </option>
                             <option value="Car" {{ $vehicle->vehicle_type == 'Car' ? 'selected' : '' }}>Car</option>
                             <option value="Motorcycle" {{ $vehicle->vehicle_type == 'Motorcycle' ? 'selected' : '' }}>Motorcycle</option>
                         </select>
@@ -50,7 +95,7 @@
                     <div class="mb-3">
                         <label class="form-label" for="vehicle_transmition">Vehicle Transmition</label>
                         <select class="form-control form-control" id="vehicle_transmition" name="vehicle_transmition">
-                            <option value=" "> </option>
+                            <option value=""> </option>
                             <option value="Automatic" {{ $vehicle->vehicle_transmition == 'Automatic' ? 'selected' : '' }}>Automatic</option>
                             <option value="Manual" {{ $vehicle->vehicle_transmition == 'Manual' ? 'selected' : '' }}>Manual</option>
                         </select>
@@ -71,7 +116,7 @@
                     <div class="mb-3">
                         <label class="form-label" for="vehicle_fuel_type">Vehicle Fuel Type</label>
                         <select class="form-control form-control" id="vehicle_fuel_type" name="vehicle_fuel_type">
-                            <option value=" "> </option>
+                            <option value=""> </option>
                             <option value="Gasoline" {{ $vehicle->vehicle_fuel_type == 'Gasoline' ? 'selected' : '' }}>Gasoline</option>
                             <option value="Diesel" {{ $vehicle->vehicle_fuel_type == 'Diesel' ? 'selected' : '' }}>Diesel</option>
                             <option value="Electric" {{ $vehicle->vehicle_fuel_type == 'Electric' ? 'selected' : '' }}>Electric</option>
@@ -111,7 +156,7 @@
                     <div class="mb-3">
                         <label class="form-label" for="vehicle_service_fee">Vehicle Service Fee</label>
                         <select class="form-control form-control" id="vehicle_service_fee" name="vehicle_service_fee">
-                            <option value=" "> </option>
+                            <option value=""> </option>
                             <option value="Relatively cheap" {{ $vehicle->vehicle_service_fee == 'Relatively cheap' ? 'selected' : '' }}>Relatively cheap</option>
                             <option value="Relatively expensive" {{ $vehicle->vehicle_service_fee == 'Relatively expensive' ? 'selected' : '' }}>Relatively expensive</option>
                         </select>
@@ -124,16 +169,6 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="files" class="form-label" style="color: red;">Please Reupload Cover Image</label>
-                        <input type="file" name="vehicle_cover_image" class="form-control" accept="image/*" >
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="files" class="form-label" style="color: red;">Please Reupload Image</label>
-                        <input type="file" name="images[]" class="form-control" accept="image/*"  multiple>
-                    </div>
-
-                    <div class="mb-3">
                         <label class="form-label" for="vehicle_status">Status</label>
                         <select class="form-control form-control" id="vehicle_status" name="vehicle_status">
                             <option value="Available" {{ $vehicle->vehicle_status == 'Available' ? 'selected' : '' }}>Available</option>
@@ -141,12 +176,9 @@
                         </select>
                     </div>
 
-                    {{-- <div class="add d-flex justify-content-center mt-5 mb-3">
+                    <div class="add d-flex justify-content-center mt-3 mb-3">
                         <button type="submit" class="btn btn-warning" style="background-color: #FFC107; color: black;">Submit</button>
-                    </div> --}}
-                    {{-- <form action="{{ route('editProduct', $vehicle->id) }}" method="POST" enctype="multipart/form-data">
-                        @csrf  <button type="submit" class="btn btn-warning" style="background-color: #FFC107; color: black;">Submit</button>
-                      </form> --}}
+                    </div>
 
                 </form>
             </div>
