@@ -17,9 +17,7 @@ use App\Models\Vehicle;
 |
 */
 
-Route::get('/', [PageController::class, 'index']);
-Route::get('/home', [PageController::class, 'index']);
-
+//USER AND AUTH
 Route::get('/register', [PageController::class, 'register']);
 Route::post('/register', [PageController::class, 'registerLogic']);
 Route::get('/login', [PageController::class, 'login']);
@@ -27,16 +25,20 @@ Route::post('/login', [PageController::class, 'loginLogic']);
 Route::get('/loginRecovery', [PageController::class, 'loginRecovery']);
 Route::post('/loginRecovery', [PageController::class, 'loginRecoveryLogic']);
 Route::get('/logout', [PageController::class, 'logout']);
-
 Route::get('/profile', [PageController::class, 'profile'])->name('profile.show');
-// Route::get('/editProfile/{id}', [PageController::class, 'editProfile']);
 Route::get('/profile/edit', [PageController::class, 'editProfile'])->name('profile.edit');
 Route::post('/profile/update', [PageController::class, 'updateProfile'])->name('profile.update');
 
 
+//MAIN PAGE
+Route::get('/', [PageController::class, 'index']);
+Route::get('/home', [PageController::class, 'index']);
 Route::get('/browse', [PageController::class, 'browse'])->name('browse');
 Route::get('/compare', [PageController::class, 'compare']);
+Route::get('/detailVehicle/{id}', [PageController::class, 'detailVehicle'])->name('vehicle.detail');
 
+
+//CRUD PRODUCT
 Route::get('/myProduct', [VehicleController::class, 'myProduct']);
 Route::get('/addProduct', [VehicleController::class, 'addProduct']);
 Route::post('/addProductLogic', [VehicleController::class, 'addProductLogic']);

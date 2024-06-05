@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('admin123'),
-            'phone' => '081234567890',
+            'phone' => '6281290558001',
             'location' => 'DKI Jakarta',
             'recovery_question' => 'zzz',
             'recovery_answer' => 'apaaja'
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
             'name' => 'Jojo',
             'email' => 'jojo@gmail.com',
             'password' => Hash::make('test1234'),
-            'phone' => '081234123412',
+            'phone' => '6282123636278',
             'location' => 'Banten',
             'recovery_question' => 'zzz',
             'recovery_answer' => 'apaaja'

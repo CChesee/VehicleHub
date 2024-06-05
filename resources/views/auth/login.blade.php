@@ -39,14 +39,23 @@
 
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="email">Email</label>
-                                    <input type="email" id="email" class="form-control form-control-lg" name="email" />
-                                <div id="error" class="form-text">{{$errors->first('email')}}</div>
+                                @if ($errors->has('email'))
+                                    <div class="alert alert-danger">
+                                        {{ $errors->first('email') }}
+                                    </div>
+                                @endif
+                                <input type="email" id="email" class="form-control form-control-lg" name="email" value="{{ old('email') }}"/>
                             </div>
 
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="password">Password</label>
-                                    <input type="password" id="password" class="form-control form-control-lg" name="password"/>
-                                <div id="error" class="form-text">{{$errors->first('password')}}</div>
+
+                                @if ($errors->has('password'))
+                                    <div class="alert alert-danger">
+                                        {{ $errors->first('password') }}
+                                    </div>
+                                @endif
+                                <input type="password" id="password" class="form-control form-control-lg" name="password" value="{{ old('password') }}"/>
                             </div>
 
                             <div class="mb-2">

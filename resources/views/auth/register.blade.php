@@ -24,25 +24,43 @@
 
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="name">Name</label>
-                                    <input type="text" id="name" class="form-control form-control-lg" name="name"/>
-                                    <div id="error" class="form-text">{{$errors->first('name')}}</div>
+                                    @if ($errors->has('name'))
+                                        <div class="alert alert-danger">
+                                            {{ $errors->first('name') }}
+                                        </div>
+                                    @endif
+                                    <input type="text" id="name" class="form-control form-control-lg @if ($errors->has('name')) is-invalid @endif" name="name" value="{{ old('name') }}"/>
                                 </div>
 
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="email">Email</label>
-                                    <input type="email" id="email" class="form-control form-control-lg" name="email" />
-                                    <div id="error" class="form-text">{{$errors->first('email')}}</div>
+                                    @if ($errors->has('email'))
+                                        <div class="alert alert-danger">
+                                            {{ $errors->first('email') }}
+                                        </div>
+                                    @endif
+                                    <input type="email" id="email" class="form-control form-control-lg" name="email" value="{{ old('email') }}"/>
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <label class="form-label" for="phoneNumber">Phone Number</label>
-                                    <input type="text" id="phoneNumber" class="form-control form-control-lg" name="phoneNumber"/>
-                                    <div id="error" class="form-text">{{$errors->first('phoneNumber')}}</div>
+                                    <label class="form-label" for="phoneNumber">Phone Number (Please use country code in the beginning)</label>
+                                    @if ($errors->has('phoneNumber'))
+                                        <div class="alert alert-danger">
+                                            {{ $errors->first('phoneNumber') }}
+                                        </div>
+                                    @endif
+                                    <input type="text" id="phoneNumber" class="form-control form-control-lg" name="phoneNumber" placeholder="Example:62xxxxxxxxxx" value="{{ old('phoneNumber') }}"/>
                                 </div>
 
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="location">City Location (Click to choose)</label>
+                                    @if ($errors->has('location'))
+                                        <div class="alert alert-danger">
+                                            {{ $errors->first('location') }}
+                                        </div>
+                                    @endif
                                     <select class="form-control form-control-lg" id="location" name="location">
+                                        <option value=""> </option>
                                         <option value="Nanggroe Aceh Darussalam">Nanggroe Aceh Darussalam</option>
                                         <option value="Sumatera Utara">Sumatera Utara</option>
                                         <option value="Sumatera Selatan">Sumatera Selatan</option>
@@ -86,7 +104,13 @@
 
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="recoveryQuestion">Recovery Question (Click to choose)</label>
+                                    @if ($errors->has('recoveryQuestion'))
+                                        <div class="alert alert-danger">
+                                            {{ $errors->first('recoveryQuestion') }}
+                                        </div>
+                                    @endif
                                     <select class="form-control form-control-lg" id="recoveryQuestion" name="recoveryQuestion">
+                                        <option value=""> </option>
                                         <option value="What is your grandfather name?">What is your grandfather's name?</option>
                                         <option value="What is your grandmother name?">What is your grandmother's name?</option>
                                         <option value="What was the name of your first pet?">What was the name of your first pet?</option>
@@ -102,20 +126,32 @@
 
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="recoveryAnswer">Recovery Answer (must use lowercase letter only)</label>
-                                    <input type="text" id="recoveryAnswer" class="form-control form-control-lg" name="recoveryAnswer"/>
-                                    <div id="error" class="form-text">{{$errors->first('recoveryAnswer')}}</div>
+                                    @if ($errors->has('recoveryAnswer'))
+                                        <div class="alert alert-danger">
+                                            {{ $errors->first('recoveryAnswer') }}
+                                        </div>
+                                    @endif
+                                    <input type="text" id="recoveryAnswer" class="form-control form-control-lg" name="recoveryAnswer" pattern="[a-z]+" value="{{ old('recoveryAnswer') }}"/> <div id="error" class="form-text">{{$errors->first('recoveryAnswer')}}</div>
                                 </div>
 
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="password">Password</label>
+                                    @if ($errors->has('password'))
+                                        <div class="alert alert-danger">
+                                            {{ $errors->first('password') }}
+                                        </div>
+                                    @endif
                                     <input type="password" id="password" class="form-control form-control-lg" name="password"/>
-                                    <div id="error" class="form-text">{{$errors->first('password')}}</div>
                                 </div>
 
                                 <div class="form-outline mb-3">
                                     <label class="form-label" for="confirmPassword">Confirm Password</label>
+                                    @if ($errors->has('confirmPassword'))
+                                        <div class="alert alert-danger">
+                                            {{ $errors->first('confirmPassword') }}
+                                        </div>
+                                    @endif
                                     <input type="password" id="confirmPassword" class="form-control form-control-lg" name="confirmPassword"/>
-                                    <div id="error" class="form-text">{{$errors->first('confirmPassword')}}</div>
                                 </div>
 
                                 <div class="mb-3">

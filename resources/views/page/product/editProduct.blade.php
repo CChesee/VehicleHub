@@ -70,6 +70,7 @@
                             <option value="Motorcycle" {{ $vehicle->vehicle_type == 'Motorcycle' ? 'selected' : '' }}>Motorcycle</option>
                         </select>
                     </div>
+                    
                     <div class="mb-3">
                         <label for="vehicle_brand" class="form-label">Vehicle Brand</label>
                         <select class="form-control" id="vehicle_brand" name="vehicle_brand">

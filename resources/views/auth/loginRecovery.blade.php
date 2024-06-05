@@ -38,7 +38,12 @@
 
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="email">Email</label>
-                                <input type="email" id="email" class="form-control form-control-lg" name="email" onchange="getRecoveryQuestion()" />
+                                @if ($errors->has('email'))
+                                    <div class="alert alert-danger">
+                                        {{ $errors->first('email') }}
+                                    </div>
+                                @endif
+                                <input type="email" id="email" class="form-control form-control-lg" name="email" value="{{ old('email') }}" />
                                 <div id="error" class="form-text">{{$errors->first('email')}}</div>
                             </div>
 
@@ -59,9 +64,13 @@
                             </div>
 
                             <div class="form-outline mb-4">
-                                <label class="form-label" for="recovery_answer">Recovery Answer</label>
-                                <input type="text" id="recovery_answer" class="form-control form-control-lg" name="recovery_answer" />
-                                <div id="error" class="form-text">{{$errors->first('recovery_answer')}}</div>
+                                <label class="form-label" for="recovery_nswer">Recovery Answer (must use lowercase letter only)</label>
+                                @if ($errors->has('recovery_answer'))
+                                    <div class="alert alert-danger">
+                                        {{ $errors->first('recovery_answer') }}
+                                    </div>
+                                @endif
+                                <input type="text" id="recovery_answer" class="form-control form-control-lg" name="recovery_answer" pattern="[a-z]+" value="{{ old('recovery_answer') }}"/> <div id="error" class="form-text">{{$errors->first('recovery_answer')}}</div>
                             </div>
 
                             <div class="relog pt-1 mb-4 d-flex justify-content-center">

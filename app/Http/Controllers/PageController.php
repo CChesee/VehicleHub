@@ -11,16 +11,15 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class PageController extends Controller
 {
-    public function index()
-    {
+    public function index(){
         $vehicles = Vehicle::where('vehicle_status', 'Available')->with('user')->get();
 
         return view('index', compact('vehicles'));
     }
-
 
     public function home(){
         $vehicles = Vehicle::where('vehicle_status', 'Available')->with('user')->get();
@@ -29,13 +28,15 @@ class PageController extends Controller
         return view('index', compact('vehicles'));
     }
 
+    public function detailVehicle($id){
+        $vehicles = Vehicle::with('user')->find($id);
 
-    // public function browse(){
-    //     $vehicles = Vehicle::where('vehicle_status', 'Available')->get();
-    //     return view('page.browse', compact('vehicles'));
-    // }
-    public function browse(Request $request)
-    {
+        $images = $vehicles->images;
+
+        return view('page.detailVehicle', compact('vehicles', 'images'));
+    }
+
+    public function browse(Request $request){
         $userLocation = $request->get('user_location');
 
         $filters = $request->all(); // Get all filter parameters from the request
@@ -67,11 +68,17 @@ class PageController extends Controller
 
         $vehicles = $vehiclesQuery->get(); // Fetch filtered vehicles
 
-        return view('page.browse', compact('vehicles'));
+        return view('page.browse', [
+            'vehicles' => $vehicles,
+            'filters' => $filters
+
+        ]);
     }
 
     public function compare(){
-        return view('page.compare');
+        $vehicles = Vehicle::all();
+        // dd($vehicles);
+        return view('page.compare', compact('vehicles'));
     }
 
     public function login(){
@@ -83,19 +90,35 @@ class PageController extends Controller
     }
 
     public function registerLogic(Request $request){
-        $validatedData = $request->validate([
+        // Validation rules with lowercase enforcement
+        $rules = [
             'name' => 'required|min:3',
-            'email' =>'required|email:dns|unique:users',
-            'phoneNumber' => 'required|max:13',
+            'email' => 'required|email:dns|unique:users',
+            'phoneNumber' => 'required|regex:/^[1-9][0-9]{0,13}$/',
             'location' => 'required|min:3',
             'recoveryQuestion' => 'required|min:3',
-            'recoveryAnswer' => 'required|min:3',
+            'recoveryAnswer' => 'required|min:3|alpha', // Ensures lowercase letters only
             'password' => 'required|min:8',
-            'confirmPassword' => 'required|same:password'
-        ]);
+            'confirmPassword' => 'required|same:password',
+        ];
 
+        $messages = [
+            'name.required' => 'Please enter your name.',
+            'name.min' => 'Your name must be at least 3 characters long.',
+            'email.required' => 'Please enter your email address.',
+            'email.email' => 'Please enter a valid email address.',
+            'email.unique' => 'This email address is already registered.'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Hash passwords and create user
+        $validatedData = $request->validate($rules);
         $validatedData['password'] = bcrypt($validatedData['password']);
-        $validatedData['recoveryAnswer'] = bcrypt($validatedData['recoveryAnswer']);
+        $validatedData['recoveryAnswer'] = bcrypt(strtolower($validatedData['recoveryAnswer'])); // Convert to lowercase before hashing
 
         User::create([
             'name' => $validatedData['name'],
@@ -107,23 +130,28 @@ class PageController extends Controller
             'password' => $validatedData['password']
         ]);
 
-        $request->flash('success', 'Registration Success! Please Login');
 
+        // Success message and redirect
+        $request->flash('success', 'Registration Success! Please Login');
         return redirect('/login');
     }
+
     public function loginLogic(Request $request){
         $dataLogin = $request->validate([
             'email' => 'required|email:dns',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
-        if (Auth::attempt($dataLogin)) {
-            $request->session()->regenerate();
+        // Check if email exists before attempting authentication
+        $user = User::where('email', $dataLogin['email'])->first();
 
+        if ($user && Auth::attempt($dataLogin)) {
+            $request->session()->regenerate();
             return redirect()->intended('/');
-        }
-        else{
-            return back()->with('errorlogin', 'Login Failed!');
+        } else {
+            return back()->withErrors([
+                'email' => 'Email not found',
+            ]);
         }
     }
 
@@ -164,14 +192,18 @@ class PageController extends Controller
         return view('page.editProfile', compact('user'));
     }
 
-    public function updateProfile(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
+    public function updateProfile(Request $request){
+        $rules=[
+            'name' => 'required|min:3',
             'email' => 'required|string|email|max:255',
-            'phone' => 'nullable|string|max:15',
-            'location' => 'nullable|string|max:255',
-        ]);
+            'phone' => 'required|regex:/^[1-9][0-9]{0,13}$/',
+            'location' => 'required|min:3'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $user = Auth::user();
         $user->name = $request->input('name');

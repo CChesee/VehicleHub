@@ -7,6 +7,7 @@ use App\Models\Image;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image as InterventionImage;
 
 
 class VehicleController extends Controller
@@ -21,7 +22,8 @@ class VehicleController extends Controller
         return view ('page.product.addProduct');
     }
 
-    public function addProductLogic(Request $request){
+    public function addProductLogic(Request $request)
+    {
         // Validate the request data
         $request->validate([
             'vehicle_type' => 'required',
@@ -41,14 +43,37 @@ class VehicleController extends Controller
             'vehicle_service_fee' => 'required',
             'price' => 'required',
             'vehicle_status' => 'required',
-            'images'=> 'required'
+            'vehicle_cover_image' => 'required|image',
+            'images' => 'required',
+            'images.*' => 'image'
         ]);
+
+        // Check the aspect ratio of vehicle_cover_image
+        $coverImage = $request->file('vehicle_cover_image');
+        $coverImageDimensions = getimagesize($coverImage);
+        $coverImageWidth = $coverImageDimensions[0];
+        $coverImageHeight = $coverImageDimensions[1];
+
+        if ($coverImageWidth !== $coverImageHeight) {
+            return back()->withErrors(['vehicle_cover_image' => 'The cover image must be in a 1:1 ratio.'])->withInput();
+        }
+
+        // Check the aspect ratio of each image in images[]
+        foreach ($request->file('images') as $image) {
+            $imageDimensions = getimagesize($image);
+            $imageWidth = $imageDimensions[0];
+            $imageHeight = $imageDimensions[1];
+
+            if ($imageWidth !== $imageHeight) {
+                return back()->withErrors(['images' => 'All images must be in a 1:1 ratio.'])->withInput();
+            }
+        }
 
         // Get the authenticated user's ID
         $user_id = Auth::id();
 
-        $imageCoverName = $request['vehicle_name'].'-cover-image-'.time().rand(1, 1000).'.'.$request['vehicle_cover_image']->extension();
-        $request['vehicle_cover_image']->move(public_path('storage/vehicle_images'), $imageCoverName);
+        $imageCoverName = $request['vehicle_name'] . '-cover-image-' . time() . rand(1, 1000) . '.' . $coverImage->extension();
+        $coverImage->move(public_path('storage/vehicle_images'), $imageCoverName);
 
         // Create new vehicle
         $new_vehicle = Vehicle::create([
@@ -75,7 +100,7 @@ class VehicleController extends Controller
 
         foreach ($request->file('images') as $image) {
             // Move the image to the desired directory
-            $imageName = $request['vehicle_name'].'-image-'.time().rand(1, 1000).'.'.$image->extension();
+            $imageName = $request['vehicle_name'] . '-image-' . time() . rand(1, 1000) . '.' . $image->extension();
             $image->move(public_path('storage/vehicle_images'), $imageName);
 
             // Create a new Image record for each uploaded image

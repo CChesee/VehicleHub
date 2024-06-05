@@ -28,16 +28,26 @@
                                 @csrf
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="name">Name</label>
+                                    @if ($errors->has('name'))
+                                        <div class="alert alert-danger">
+                                            {{ $errors->first('name') }}
+                                        </div>
+                                    @endif
                                     <input type="text" id="name" class="form-control" name="name" value="{{ old('name', $user->name) }}" required />
                                 </div>
 
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="email">Email</label>
-                                    <input type="email" id="email" class="form-control" name="email" value="{{ old('email', $user->email) }}" required />
+                                    <input type="email" id="email" class="form-control" name="email" value="{{ old('email', $user->email) }}" readonly />
                                 </div>
 
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="phone">Phone</label>
+                                    @if ($errors->has('phone'))
+                                        <div class="alert alert-danger">
+                                            {{ $errors->first('phone') }}
+                                        </div>
+                                    @endif
                                     <input type="text" id="phone" class="form-control" name="phone" value="{{ old('phone', $user->phone) }}" />
                                 </div>
 

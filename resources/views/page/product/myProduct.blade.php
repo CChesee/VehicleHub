@@ -29,7 +29,7 @@
                     @forelse ($vehicles as $vehicle)
                         <tr>
                             <td>{{ $i++; }}</td>
-                            <td><img src="/storage/vehicle_images/{{ $vehicle->vehicle_cover_image }}" class="card-img-top" style="height: 200px; width: 300px; object-fit: cover;"></td>
+                            <td><img src="/storage/vehicle_images/{{ $vehicle->vehicle_cover_image }}" class="card-img-top" style="height: 200px; width: 200px; object-fit: cover;"></td>
                             <td>{{ $vehicle->vehicle_name }}</td>
                             <td>Rp. {{ number_format($vehicle->price, 0, ',', '.') }}</td>
                             <td>{{ $vehicle->vehicle_status }}</td>
