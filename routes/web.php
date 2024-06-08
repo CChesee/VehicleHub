@@ -57,3 +57,4 @@ Route::get('/test', function () {
 Route::get('/hello', function () {
     return "HELLO WORLD";
 });
+

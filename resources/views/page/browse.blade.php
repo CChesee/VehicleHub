@@ -18,8 +18,6 @@
                 <label class="form-label" for="vehicle_type">Vehicle Type</label>
                 <select class="form-control mb-3" id="vehicle_type" name="vehicle_type">
                     <option value="">All</option>
-                    {{-- <option value="Car" {{ $filters['vehicle_type'] == 'Car' ? 'selected' : '' }}>Car</option>
-                    <option value="Motorcycle" {{ $filters['vehicle_type'] == 'Motorcycle' ? 'selected' : '' }}>Motorcycle</option> --}}
                     <option value="Car" {{ $filters !=null? $filters['vehicle_type'] == 'Car' ? 'selected' : '' :''}}>Car</option>
                     <option value="Motorcycle" {{ $filters !=null? $filters['vehicle_type'] == 'Motorcycle' ? 'selected' : '' :''}}>Motorcycle</option>
                 </select>
