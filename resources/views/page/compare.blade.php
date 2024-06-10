@@ -88,7 +88,7 @@
                             data-maintenance-cost="{{ $vehicle->vehicle_service_fee }}"
                             data-fuel-consumption="{{ $vehicle->vehicle_fuel_consumption }}"
                             data-fuel-type="{{ $vehicle->vehicle_fuel_type }}"
-                            data-transmission-type="{{ $vehicle->vehicle_transmition }}"
+                            data-transmission-type="{{ $vehicle->vehicle_transmission }}"
                         >
                             {{ $vehicle->vehicle_name }}
                         </option>
@@ -114,7 +114,7 @@
                             data-maintenance-cost="{{ $vehicle->vehicle_service_fee }}"
                             data-fuel-consumption="{{ $vehicle->vehicle_fuel_consumption }}"
                             data-fuel-type="{{ $vehicle->vehicle_fuel_type }}"
-                            data-transmission-type="{{ $vehicle->vehicle_transmition }}"
+                            data-transmission-type="{{ $vehicle->vehicle_transmission }}"
                         >
                             {{ $vehicle->vehicle_name }}
                         </option>

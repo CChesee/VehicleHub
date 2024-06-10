@@ -59,8 +59,8 @@ class PageController extends Controller
         if (isset($filters['vehicle_fuel_type']) && $filters['vehicle_fuel_type'] != '') {
             $vehiclesQuery->where('vehicle_fuel_type', $filters['vehicle_fuel_type']);
         }
-        if (isset($filters['vehicle_transmition']) && $filters['vehicle_transmition'] != '') {
-            $vehiclesQuery->where('vehicle_transmition', $filters['vehicle_transmition']);
+        if (isset($filters['vehicle_transmission']) && $filters['vehicle_transmission'] != '') {
+            $vehiclesQuery->where('vehicle_transmission', $filters['vehicle_transmission']);
         }
         if (isset($filters['vehicle_location']) && $filters['vehicle_location'] != '') {
             $vehiclesQuery->where('vehicle_location', $filters['vehicle_location']);

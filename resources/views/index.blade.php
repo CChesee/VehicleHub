@@ -13,66 +13,23 @@
         </div>
         <div class="row">
             @foreach ($vehicles as $vehicle)
-                <div class="col-md-3">
-                    <div class="card">
-                        <img src="/storage/vehicle_images/{{ $vehicle->vehicle_cover_image }}" class="card-img-top" style="height: 300px; width:300px;">
-                        <div class="card-body">
-                            <h5 class="card-title" style="font-weight: bold;">{{ $vehicle->vehicle_name}}</h5>
-                            <p class="card-text">Rp. {{ number_format($vehicle->price, 0, ',', '.') }}</p>
-                            <p class="card-text">{{ $vehicle->vehicle_milage }} KM</p>
-                            <p class="card-text">{{ $vehicle->vehicle_location }}</p>
-                            <a style="background-color: #FFC107; color: black;" href={{ route('vehicle.detail', $vehicle->id) }} class="btn">View Detail</a>
-                        </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="img-container" style="display: flex; justify-content: center; align-items: center; height: 300px; width: 100%;">
+                        <img src="/storage/vehicle_images/{{ $vehicle->vehicle_cover_image }}" class="card-img-top" style="max-height: 300px; max-width: 100%; height: auto; width: auto;">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-weight: bold;">{{ $vehicle->vehicle_name }}</h5>
+                        <p class="card-text">Rp. {{ number_format($vehicle->price, 0, ',', '.') }}</p>
+                        <p class="card-text">{{ $vehicle->vehicle_milage }} KM</p>
+                        <p class="card-text">{{ $vehicle->vehicle_location }}</p>
+                        <a style="background-color: #FFC107; color: black;" href={{ route('vehicle.detail', $vehicle->id) }} class="btn">View Detail</a>
                     </div>
                 </div>
+            </div>
+
             @endforeach
         </div>
-
-        {{-- <div class="row">
-            <div class="carousel slide" data-bs-ride="carousel" id="vehicleCarousel">
-                <div class="carousel-inner">
-                    @php
-                    $item_count = 0; // Counter for items
-                    $is_first_item = true; // Flag for first item in a slide
-                    @endphp
-                    @foreach ($vehicles as $vehicle)
-                    @if ($item_count % 4 == 0) <div class="carousel-item {{ $is_first_item ? 'active' : '' }}">
-                        @php
-                            $is_first_item = false;
-                        @endphp
-                    @endif
-
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img src="/storage/vehicle_images/{{ $vehicle->vehicle_cover_image }}" class="card-img-top" style="height: 200px; width:300px object-fit: cover;">
-                            <div class="card-body">
-                                <h5 class="card-title" style="font-weight: bold;">{{ $vehicle->vehicle_name }}</h5>
-                                <p class="card-text">Rp. {{ number_format($vehicle->price, 0, ',', '.') }}</p>
-                                <p class="card-text">{{ $vehicle->vehicle_milage }} KM</p>
-                                <p class="card-text">{{ $vehicle->vehicle_location }}</p>
-                                <a href={{ route('vehicle.detail', $vehicle->id) }} class="btn" style="background-color: #FFC107; color: black;">View Detail</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    @if (($item_count + 1) % 4 == 0 || $loop->last) </div>
-                    @endif
-
-                    @php
-                        $item_count++;
-                    @endphp
-                    @endforeach
-                </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#vehicleCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#vehicleCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-            </div>
-        </div> --}}
     </div>
 
     <body>

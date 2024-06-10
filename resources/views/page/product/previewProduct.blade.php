@@ -115,9 +115,9 @@
                         </tr>
 
                         <tr>
-                            <td>Transmition</td>
+                            <td>Transmission</td>
                             <td>|</td>
-                            <td>{{ $vehicles->vehicle_transmition }}</td>
+                            <td>{{ $vehicles->vehicle_description }}</td>
                         </tr>
 
                         <tr>
@@ -142,6 +142,12 @@
                             <td>Price</td>
                             <td>|</td>
                             <td>Rp. {{ number_format($vehicles->price, 0, ',', '.') }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Description</td>
+                            <td>|</td>
+                            <td>{{ $vehicles->vehicle_description }}</td>
                         </tr>
 
                     </tbody>

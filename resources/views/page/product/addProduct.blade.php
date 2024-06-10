@@ -96,13 +96,13 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label" for="vehicle_transmition">Vehicle Transmition</label>
-                        <select class="form-control form-control" id="vehicle_transmition" name="vehicle_transmition">
+                        <label class="form-label" for="vehicle_transmition">Vehicle Transmission</label>
+                        <select class="form-control form-control" id="vehicle_transmission" name="vehicle_transmission">
                             <option value=" "> </option>
                             <option value="Automatic">Automatic</option>
                             <option value="Manual">Manual</option>
                         </select>
-                        <div id="emailHelp" class="mt-2 form-text alert-danger">{{$errors->first('vehicle_transmition')}}</div>
+                        <div id="emailHelp" class="mt-2 form-text alert-danger">{{$errors->first('vehicle_transmission')}}</div>
                     </div>
 
                     <div class="mb-3">
@@ -173,6 +173,12 @@
                         <label for="price" class="form-label">Price(RP)</label>
                         <input type="number" class="form-control" id="price" name="price" value="{{ old('price') }}"/>
                         <div id="emailHelp" class="mt-2 form-text alert-danger">{{$errors->first('price')}}</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="vehicle_description" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="vehicle_description" aria-describedby="emailHelp" name="vehicle_description" value="{{ old('vehicle_description') }}"/>
+                        <div id="emailHelp" class="mt-2 form-text alert-danger">{{$errors->first('vehicle_description')}}</div>
                     </div>
 
                     <div class="mb-3">

@@ -70,7 +70,7 @@
                             <option value="Motorcycle" {{ $vehicle->vehicle_type == 'Motorcycle' ? 'selected' : '' }}>Motorcycle</option>
                         </select>
                     </div>
-                    
+
                     <div class="mb-3">
                         <label for="vehicle_brand" class="form-label">Vehicle Brand</label>
                         <select class="form-control" id="vehicle_brand" name="vehicle_brand">
@@ -167,6 +167,12 @@
                         <label for="price" class="form-label">Price(RP)</label>
                         <input type="number" class="form-control" id="price" name="price" value="{{$vehicle->price}}">
                         <div id="emailHelp" class="form-text">{{$errors->first('price')}}</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="vehicle_description" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="vehicle_description" name="vehicle_description" value="{{$vehicle->vehicle_description}}">
+                        <div id="emailHelp" class="mt-2 form-text alert-danger">{{$errors->first('vehicle_description')}}</div>
                     </div>
 
                     <div class="mb-3">

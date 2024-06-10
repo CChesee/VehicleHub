@@ -31,7 +31,7 @@ class VehicleController extends Controller
             'vehicle_name' => 'required',
             'vehicle_category' => 'required',
             'vehicle_location' => 'required',
-            'vehicle_transmition' => 'required',
+            'vehicle_transmission' => 'required',
             'vehicle_seat_capacity' => 'required',
             'vehicle_engine_capacity' => 'required',
             'vehicle_fuel_type' => 'required',
@@ -42,6 +42,7 @@ class VehicleController extends Controller
             'vehicle_tax' => 'required',
             'vehicle_service_fee' => 'required',
             'price' => 'required',
+            'vehicle_description' => 'required|max:1000',
             'vehicle_status' => 'required',
             'vehicle_cover_image' => 'required|image',
             'images' => 'required',
@@ -83,7 +84,7 @@ class VehicleController extends Controller
             'vehicle_name' => $request['vehicle_name'],
             'vehicle_location' => $request['vehicle_location'],
             'vehicle_category' => $request['vehicle_category'],
-            'vehicle_transmition' => $request['vehicle_transmition'],
+            'vehicle_transmission' => $request['vehicle_transmission'],
             'vehicle_seat_capacity' => $request['vehicle_seat_capacity'],
             'vehicle_engine_capacity' => $request['vehicle_engine_capacity'],
             'vehicle_fuel_type' => $request['vehicle_fuel_type'],
@@ -95,6 +96,7 @@ class VehicleController extends Controller
             'vehicle_service_fee' => $request['vehicle_service_fee'],
             'vehicle_status' => $request['vehicle_status'],
             'price' => $request['price'],
+            'vehicle_description' => $request['vehicle_description'],
             'vehicle_cover_image' => $imageCoverName
         ]);
 
@@ -128,7 +130,7 @@ class VehicleController extends Controller
             'vehicle_name' => 'required',
             'vehicle_category' => 'required',
             'vehicle_location' => 'required',
-            'vehicle_transmition' => 'required',
+            'vehicle_transmission' => 'required',
             'vehicle_seat_capacity' => 'required',
             'vehicle_engine_capacity' => 'required',
             'vehicle_fuel_type' => 'required',
@@ -139,6 +141,7 @@ class VehicleController extends Controller
             'vehicle_tax' => 'required',
             'vehicle_service_fee' => 'required',
             'price' => 'required',
+            'vehicle_description' => 'required|max:1000',
             'vehicle_status' => 'required',
         ]);
 
@@ -148,7 +151,7 @@ class VehicleController extends Controller
         $vehicle->vehicle_name = $request->vehicle_name;
         $vehicle->vehicle_category = $request->vehicle_category;
         $vehicle->vehicle_location = $request->vehicle_location;
-        $vehicle->vehicle_transmition = $request->vehicle_transmition;
+        $vehicle->vehicle_vehicle_transmission = $request->vehicle_transmission;
         $vehicle->vehicle_seat_capacity = $request->vehicle_seat_capacity;
         $vehicle->vehicle_engine_capacity = $request->vehicle_engine_capacity;
         $vehicle->vehicle_fuel_type = $request->vehicle_fuel_type;
@@ -159,6 +162,7 @@ class VehicleController extends Controller
         $vehicle->vehicle_tax = $request->vehicle_tax;
         $vehicle->vehicle_service_fee = $request->vehicle_service_fee;
         $vehicle->price = $request->price;
+        $vehicle->vehicle_description = $request->vehicle_description;
         $vehicle->vehicle_status = $request->vehicle_status;
         $vehicle->save();
         return redirect('/myProduct');

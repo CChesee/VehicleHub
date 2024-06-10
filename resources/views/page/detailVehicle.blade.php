@@ -66,9 +66,10 @@
                     <li class="d-flex"><span class="detail-title"><i class="fas fa-gas-pump"></i> Fuel Type</span><span class="detail-content">: {{ $vehicles->vehicle_fuel_type }}</span></li>
                     <li class="d-flex"><span class="detail-title"><i class="fas fa-gas-pump"></i> Fuel Tank Capacity</span><span class="detail-content">: {{ $vehicles->vehicle_fuel_tank_capacity }} L</span></li>
                     <li class="d-flex"><span class="detail-title"><i class="fas fa-route"></i> Fuel Consumption</span><span class="detail-content">: {{ $vehicles->vehicle_fuel_consumption }} KM/L</span></li>
-                    <li class="d-flex"><span class="detail-title"><i class="fas fa-cogs"></i> Transmission</span><span class="detail-content">: {{ $vehicles->vehicle_transmition }}</span></li>
+                    <li class="d-flex"><span class="detail-title"><i class="fas fa-cogs"></i> Transmission</span><span class="detail-content">: {{ $vehicles->vehicle_transmission }}</span></li>
                     <li class="d-flex"><span class="detail-title"><i class="fas fa-users"></i> Seat Capacity</span><span class="detail-content">: {{ $vehicles->vehicle_seat_capacity }}</span></li>
                     <li class="d-flex"><span class="detail-title"><i class="fas fa-cogs"></i> Engine Capacity</span><span class="detail-content">: {{ $vehicles->vehicle_engine_capacity }}</span></li>
+                    <li class="d-flex"><span class="detail-title"><i class="fas fa-cogs"></i> Description</span><span class="detail-content">: {{ $vehicles->vehicle_description }}</span></li>
                 </ul>
 
                 <div class="seller-details d-flex align-items-center">

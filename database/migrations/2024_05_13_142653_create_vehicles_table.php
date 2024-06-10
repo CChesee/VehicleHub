@@ -27,12 +27,13 @@ return new class extends Migration
             $table->string('vehicle_fuel_type');
             $table->unsignedBigInteger('vehicle_fuel_tank_capacity');
             $table->unsignedBigInteger('vehicle_fuel_consumption');
-            $table->string('vehicle_transmition');
+            $table->string('vehicle_transmission');
             $table->unsignedBigInteger('vehicle_seat_capacity');
             $table->unsignedBigInteger('vehicle_engine_capacity');
             $table->string('vehicle_status');
             $table->unsignedBigInteger('price');
             $table->string('vehicle_cover_image');
+            $table->string('vehicle_description');
             $table->timestamps();
         });
     }

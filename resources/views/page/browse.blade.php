@@ -40,11 +40,11 @@
                     <option value="Electric">Electric</option>
                 </select>
 
-                <label class="form-label" for="vehicle_transmition">Vehicle Transmition</label>
-                <select class="form-control mb-3" id="vehicle_transmition" name="vehicle_transmition">
+                <label class="form-label" for="vehicle_transmition">Vehicle Transmission</label>
+                <select class="form-control mb-3" id="vehicle_transmission" name="vehicle_transmission">
                     <option value="">All</option>
-                    <option value="Automatic" {{ $filters !=null? $filters['vehicle_transmition'] == 'Automatic' ? 'selected' : '' :''}}>Automatic</option>
-                    <option value="Manual" {{ $filters !=null? $filters['vehicle_transmition'] == 'Manual' ? 'selected' : '' :''}}>Manual</option>
+                    <option value="Automatic" {{ $filters !=null? $filters['vehicle_transmission'] == 'Automatic' ? 'selected' : '' :''}}>Automatic</option>
+                    <option value="Manual" {{ $filters !=null? $filters['vehicle_transmission'] == 'Manual' ? 'selected' : '' :''}}>Manual</option>
                 </select>
 
                 <label class="form-label" for="vehicle_location">Location</label>
@@ -99,7 +99,7 @@
 
 
             <div class="card d-flex flex-row align-items-center mb-3">
-                <img src="/storage/vehicle_images/{{ $vehicle->vehicle_cover_image }}" class="card-img-top" style="height: 200px; width: 200px;">
+                <img src="/storage/vehicle_images/{{ $vehicle->vehicle_cover_image }}" class="card-img-top" style="margin-left: 20px; height: 200px; width: 200px;">
                 <div class="card-body">
                     <h1>{{ $vehicle->vehicle_name }}</h1>
                     <div class="d-flex flex-column">
