@@ -64,6 +64,12 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="vehicle_name" class="form-label">Vehicle Name</label>
+                        <input type="text" class="form-control" id="vehicle_name" aria-describedby="emailHelp" name="vehicle_name" value="{{ old('vehicle_name') }}"/>
+                        <div id="emailHelp" class="mt-2 form-text alert-danger">{{$errors->first('vehicle_name')}}</div>
+                    </div>
+
+                    <div class="mb-3">
                         <label class="form-label" for="vehicle_type">Vehicle Type</label>
                         <select class="form-control form-control" id="vehicle_type" name="vehicle_type">
                             <option value=" "> </option>
@@ -82,12 +88,6 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="vehicle_name" class="form-label">Vehicle Name</label>
-                        <input type="text" class="form-control" id="vehicle_name" aria-describedby="emailHelp" name="vehicle_name" value="{{ old('vehicle_name') }}"/>
-                        <div id="emailHelp" class="mt-2 form-text alert-danger">{{$errors->first('vehicle_name')}}</div>
-                    </div>
-
-                    <div class="mb-3">
                         <label for="vehicle_category" class="form-label">Vehicle Category</label>
                         <select class="form-control form-control" id="vehicle_category" name="vehicle_category">
                             <option value="">Please select a vehicle type first</option>
@@ -96,7 +96,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label" for="vehicle_transmition">Vehicle Transmission</label>
+                        <label class="form-label" for="vehicle_transmission">Vehicle Transmission</label>
                         <select class="form-control form-control" id="vehicle_transmission" name="vehicle_transmission">
                             <option value=" "> </option>
                             <option value="Automatic">Automatic</option>
@@ -188,7 +188,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="files" class="form-label">Detail Image(Can be more than 1; Image ratio 1:1)</label>
+                        <label for="files" class="form-label">Detail Image (Can be more than 1; Image ratio 1:1)</label>
                         <input type="file" name="images[]" class="form-control" accept="image/*"  multiple>
                         <div id="emailHelp" class="mt-2 form-text alert-danger">{{$errors->first('images')}}</div>
                     </div>
@@ -243,7 +243,7 @@
             };
 
             const categoriesByType = {
-                Car: ['', 'Convertible', 'Coupe', 'Crossover', 'Electric Car', 'Hatchback', 'Hybrid', 'Minivan', 'LCGC', 'Pickup', 'Sedan', 'SUV', 'Wagon'],
+                Car: ['', 'Convertible', 'Coupe', 'Crossover', 'Electric Car', 'Hatchback', 'Hybrid', 'Hypercar', 'Minivan', 'LCGC', 'Pickup', 'Sedan', 'SUV', 'Sport', 'Wagon'],
                 Motorcycle: ['', 'Adventure Bike', 'Cruiser', 'Cub', 'Custom Bike', 'Dirt Bike', 'Electric Bike', 'Naked Bike', 'Touring Bike', 'Scooter', 'Sport Bike' ]
             };
 

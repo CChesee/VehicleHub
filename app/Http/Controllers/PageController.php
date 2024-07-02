@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Image;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -16,15 +13,18 @@ use Illuminate\Support\Facades\Validator;
 class PageController extends Controller
 {
     public function index(){
-        $vehicles = Vehicle::where('vehicle_status', 'Available')->with('user')->get();
+        $vehicles = Vehicle::where('vehicle_status', 'Available')
+            ->with('user')
+            ->orderBy('updated_at', 'desc')
+            ->take(4)
+            ->get();
 
         return view('index', compact('vehicles'));
     }
 
+
     public function home(){
         $vehicles = Vehicle::where('vehicle_status', 'Available')->with('user')->get();
-        // $images = $vehicles->images;
-
         return view('index', compact('vehicles'));
     }
 
@@ -44,40 +44,38 @@ class PageController extends Controller
         $vehiclesQuery = Vehicle::where('vehicle_status', 'Available'); // Base query
 
         // Apply filters based on user selections (if any)
-        if (isset($filters['vehicle_name']) && $filters['vehicle_name'] != '') {
+        if (!empty($filters['vehicle_name'])) {
             $vehiclesQuery->where('vehicle_name', 'like', "%{$filters['vehicle_name']}%");
         }
-        if (isset($filters['vehicle_type']) && $filters['vehicle_type'] != '') {
+        if (!empty($filters['vehicle_type'])) {
             $vehiclesQuery->where('vehicle_type', $filters['vehicle_type']);
         }
-        if (isset($filters['vehicle_brand']) && $filters['vehicle_brand'] != '') {
+        if (!empty($filters['vehicle_brand'])) {
             $vehiclesQuery->where('vehicle_brand', $filters['vehicle_brand']);
         }
-        if (isset($filters['vehicle_category']) && $filters['vehicle_category'] != '') {
+        if (!empty($filters['vehicle_category'])) {
             $vehiclesQuery->where('vehicle_category', $filters['vehicle_category']);
         }
-        if (isset($filters['vehicle_fuel_type']) && $filters['vehicle_fuel_type'] != '') {
+        if (!empty($filters['vehicle_fuel_type'])) {
             $vehiclesQuery->where('vehicle_fuel_type', $filters['vehicle_fuel_type']);
         }
-        if (isset($filters['vehicle_transmission']) && $filters['vehicle_transmission'] != '') {
+        if (!empty($filters['vehicle_transmission'])) {
             $vehiclesQuery->where('vehicle_transmission', $filters['vehicle_transmission']);
         }
-        if (isset($filters['vehicle_location']) && $filters['vehicle_location'] != '') {
+        if (!empty($filters['vehicle_location'])) {
             $vehiclesQuery->where('vehicle_location', $filters['vehicle_location']);
         }
 
-        $vehicles = $vehiclesQuery->get(); // Fetch filtered vehicles
+        $vehicles = $vehiclesQuery->simplePaginate(4); // PAGINATION HERE
 
         return view('page.browse', [
             'vehicles' => $vehicles,
             'filters' => $filters
-
         ]);
     }
 
     public function compare(){
-        $vehicles = Vehicle::all();
-        // dd($vehicles);
+        $vehicles = Vehicle::where('vehicle_status', 'Available')->with('user')->get();
         return view('page.compare', compact('vehicles'));
     }
 
@@ -145,15 +143,25 @@ class PageController extends Controller
         // Check if email exists before attempting authentication
         $user = User::where('email', $dataLogin['email'])->first();
 
-        if ($user && Auth::attempt($dataLogin)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/');
+        if ($user) {
+            // Email exists, now attempt authentication
+            if (Auth::attempt($dataLogin)) {
+                $request->session()->regenerate();
+                return redirect()->intended('/');
+            } else {
+                // Email exists but password is incorrect
+                return back()->withErrors([
+                    'password' => 'Incorrect password',
+                ]);
+            }
         } else {
+            // Email does not exist
             return back()->withErrors([
                 'email' => 'Email not found',
             ]);
         }
     }
+
 
     public function loginRecovery(){
         return view('auth.loginRecovery');

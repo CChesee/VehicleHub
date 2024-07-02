@@ -260,7 +260,7 @@
 
                 highlightLowerValue('vehicle1Price', 'vehicle2Price', vehicle1Price, vehicle2Price);
                 highlightLowerValue('vehicle1KM', 'vehicle2KM', vehicle1KM, vehicle2KM);
-                highlightLowerValue('vehicle1ProductionYear', 'vehicle2ProductionYear', vehicle1ProductionYear, vehicle2ProductionYear);
+                highlightHigherValue('vehicle1ProductionYear', 'vehicle2ProductionYear', vehicle1ProductionYear, vehicle2ProductionYear);
                 highlightLowerValue('vehicle1TaxPrice', 'vehicle2TaxPrice', vehicle1TaxPrice, vehicle2TaxPrice);
                 highlightMaintenanceCost('vehicle1MaintenanceCost', 'vehicle2MaintenanceCost', vehicle1MaintenanceCost, vehicle2MaintenanceCost);
                 highlightHigherValue('vehicle1FuelConsumption', 'vehicle2FuelConsumption', vehicle1FuelConsumption, vehicle2FuelConsumption);
@@ -284,14 +284,14 @@
             const highlightHigherValue = (id1, id2, value1, value2) => {
                 const element1 = document.getElementById(id1);
                 const element2 = document.getElementById(id2);
-                if (value1 > value2) {
-                    element1.classList.add('highlight-green');
+                if (value1 < 1 || value2 < 1) {
+                    element1.classList.remove('highlight-green');
                     element2.classList.remove('highlight-green');
                 } else if (value2 > value1) {
                     element2.classList.add('highlight-green');
                     element1.classList.remove('highlight-green');
-                } else {
-                    element1.classList.remove('highlight-green');
+                } else if (value1 > value2) {
+                    element1.classList.add('highlight-green');
                     element2.classList.remove('highlight-green');
                 }
             };

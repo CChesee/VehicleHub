@@ -73,9 +73,15 @@
                         </tr>
 
                         <tr>
+                            <td>Location</td>
+                            <td>|</td>
+                            <td>{{ $vehicles->vehicle_location }}</td>
+                        </tr>
+
+                        <tr>
                             <td>Milage</td>
                             <td>|</td>
-                            <td>{{ $vehicles->vehicle_milage }}</td>
+                            <td>{{ number_format($vehicles->vehicle_milage, 0, ',', '.') }} KM</td>
                         </tr>
 
                         <tr>
@@ -117,7 +123,7 @@
                         <tr>
                             <td>Transmission</td>
                             <td>|</td>
-                            <td>{{ $vehicles->vehicle_description }}</td>
+                            <td>{{ $vehicles->vehicle_transmission }}</td>
                         </tr>
 
                         <tr>
@@ -129,7 +135,7 @@
                         <tr>
                             <td>Engine Capacity</td>
                             <td>|</td>
-                            <td>{{ $vehicles->vehicle_engine_capacity }}CC</td>
+                            <td>{{ $vehicles->vehicle_engine_capacity }} CC</td>
                         </tr>
 
                         <tr>

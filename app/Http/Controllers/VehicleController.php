@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Image;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image as InterventionImage;
 
 
 class VehicleController extends Controller
@@ -24,7 +22,6 @@ class VehicleController extends Controller
 
     public function addProductLogic(Request $request)
     {
-        // Validate the request data
         $request->validate([
             'vehicle_type' => 'required',
             'vehicle_brand' => 'required',
@@ -36,9 +33,9 @@ class VehicleController extends Controller
             'vehicle_engine_capacity' => 'required',
             'vehicle_fuel_type' => 'required',
             'vehicle_fuel_tank_capacity' => 'required',
-            'vehicle_fuel_consumption' => 'required',
+            'vehicle_fuel_consumption' => 'required|min:1',
             'vehicle_milage' => 'required',
-            'vehicle_year_production' => 'required|numeric|max:' . date('Y'),
+            'vehicle_year_production' => 'required|numeric|min:1|max:' . date('Y'),
             'vehicle_tax' => 'required',
             'vehicle_service_fee' => 'required',
             'price' => 'required',
@@ -135,9 +132,9 @@ class VehicleController extends Controller
             'vehicle_engine_capacity' => 'required',
             'vehicle_fuel_type' => 'required',
             'vehicle_fuel_tank_capacity' => 'required',
-            'vehicle_fuel_consumption' => 'required',
+            'vehicle_fuel_consumption' => 'required|min:1',
             'vehicle_milage' => 'required',
-            'vehicle_year_production' => 'required|numeric|max:' . date('Y'),
+            'vehicle_year_production' => 'required|numeric|min:1886|max:' . date('Y'),
             'vehicle_tax' => 'required',
             'vehicle_service_fee' => 'required',
             'price' => 'required',
@@ -151,7 +148,7 @@ class VehicleController extends Controller
         $vehicle->vehicle_name = $request->vehicle_name;
         $vehicle->vehicle_category = $request->vehicle_category;
         $vehicle->vehicle_location = $request->vehicle_location;
-        $vehicle->vehicle_vehicle_transmission = $request->vehicle_transmission;
+        $vehicle->vehicle_transmission = $request->vehicle_transmission;
         $vehicle->vehicle_seat_capacity = $request->vehicle_seat_capacity;
         $vehicle->vehicle_engine_capacity = $request->vehicle_engine_capacity;
         $vehicle->vehicle_fuel_type = $request->vehicle_fuel_type;
@@ -165,6 +162,8 @@ class VehicleController extends Controller
         $vehicle->vehicle_description = $request->vehicle_description;
         $vehicle->vehicle_status = $request->vehicle_status;
         $vehicle->save();
+
+        // Redirect to myProduct route
         return redirect('/myProduct');
     }
 

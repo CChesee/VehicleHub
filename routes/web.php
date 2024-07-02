@@ -50,9 +50,9 @@ Route::get('/previewProduct/{id}', [VehicleController::class, 'previewProduct'])
 
 
 //-------------------------------testing-------------------------------
-Route::get('/test', function () {
-    return User::all();
-});
+// Route::get('/test', function () {
+//     return User::all();
+// });
 
 Route::get('/hello', function () {
     return "HELLO WORLD";

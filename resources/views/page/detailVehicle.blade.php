@@ -72,7 +72,7 @@
                     <li class="d-flex"><span class="detail-title"><i class="fas fa-cogs"></i> Description</span><span class="detail-content">: {{ $vehicles->vehicle_description }}</span></li>
                 </ul>
 
-                <div class="seller-details d-flex align-items-center">
+                <div class="seller-details d-flex align-items-center mb-3">
                     <img src="{{ asset('storage/app_image/myprofile.png') }}" alt="profile image" class="img-fluid col-md-3" />
                     <div class="ms-3">
                         <h4>Seller : {{ $vehicles->user->name }}</h4>

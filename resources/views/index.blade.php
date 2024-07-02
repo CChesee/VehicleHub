@@ -96,7 +96,7 @@
                 <div class="col-md-3">
                     <div class="card my-3">
                         <div class="card-body">
-                            <h5 class="card-title" style="font-weight: bold;">EV Bike</h5>
+                            <h5 class="card-title text-center" style="font-weight: bold;">EV Bike</h5>
                             <img src="{{ asset('storage/app_image/iconElectricBike.png') }}" height="150" class="img-fluid mx-auto d-block" alt="Vehicle Image">
                             <a href="{{ route('browse', ['vehicle_category' => 'Electric Bike']) }}" class="btn d-block mx-auto" style="background-color: #FFC107; color: black;">View Categories</a>
                         </div>
@@ -121,25 +121,35 @@
             <div class="row" style="justify-content: center;">
                 <div class="col-md-3">
                     <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title text-center" style="font-weight: bold;">Browse Vehicle</h5>
-                        <img src="{{ asset('storage/app_image/iconBrowse.png') }}" height="150" class="img-fluid mx-auto d-block" alt="Vehicle Image">
-                        <a href="/browse" class="btn d-block mx-auto" style="background-color: #FFC107; color: black;">Browse Vehicle</a>
-                    </div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center" style="font-weight: bold;">Browse Vehicle</h5>
+                            <img src="{{ asset('storage/app_image/iconBrowse.png') }}" height="0" class="img-fluid mx-auto d-block mb-3" alt="Vehicle Image">
+                            <a href="/browse" class="btn d-block mx-auto" style="background-color: #FFC107; color: black;">Browse Vehicle</a>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title text-center" style="font-weight: bold;">My Product</h5>
-                        <img src="{{ asset('storage/app_image/iconMyproduct.png') }}" height="150" class="img-fluid mx-auto d-block" alt="Vehicle Image">
-                        @if(auth()->check())
-                            <a href="/myProduct" class="btn d-block mx-auto" style="background-color: #FFC107; color: black;">My Product</a>
-                        @else
-                            <a href="{{url('login')}}" class="btn d-block mx-auto" style="background-color: #FFC107; color: black;">My Product</a>
-                        @endif
+                        <div class="card-body">
+                            <h5 class="card-title text-center" style="font-weight: bold;">Compare Vehicle</h5>
+                            <img src="{{ asset('storage/app_image/iconCompare.png') }}" height="150" class="img-fluid mx-auto d-block mb-3" alt="Vehicle Image">
+                            <a href="/compare" class="btn d-block mx-auto" style="background-color: #FFC107; color: black;">Compare Vehicle</a>
+                        </div>
                     </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-center" style="font-weight: bold;">My Product</h5>
+                            <img src="{{ asset('storage/app_image/iconMyProduct.png') }}" height="150" class="img-fluid mx-auto d-block mb-3" alt="Vehicle Image">
+                            @if(auth()->check())
+                                <a href="/myProduct" class="btn d-block mx-auto" style="background-color: #FFC107; color: black;">My Product</a>
+                            @else
+                                <a href="{{url('login')}}" class="btn d-block mx-auto" style="background-color: #FFC107; color: black;">My Product</a>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

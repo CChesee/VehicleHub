@@ -94,11 +94,11 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label" for="vehicle_transmition">Vehicle Transmition</label>
-                        <select class="form-control form-control" id="vehicle_transmition" name="vehicle_transmition">
+                        <label class="form-label" for="vehicle_transmission">Vehicle Transmission</label>
+                        <select class="form-control form-control" id="vehicle_transmission" name="vehicle_transmission">
                             <option value=""> </option>
-                            <option value="Automatic" {{ $vehicle->vehicle_transmition == 'Automatic' ? 'selected' : '' }}>Automatic</option>
-                            <option value="Manual" {{ $vehicle->vehicle_transmition == 'Manual' ? 'selected' : '' }}>Manual</option>
+                            <option value="Automatic" {{ $vehicle->vehicle_transmission == 'Automatic' ? 'selected' : '' }}>Automatic</option>
+                            <option value="Manual" {{ $vehicle->vehicle_transmission == 'Manual' ? 'selected' : '' }}>Manual</option>
                         </select>
                     </div>
 
@@ -208,7 +208,7 @@
         };
 
         const categoriesByType = {
-          Car: ['', 'Convertible', 'Coupe', 'Crossover', 'Electric Car', 'Hatchback', 'Hybrid', 'Minivan', 'LCGC', 'Pickup', 'Sedan', 'SUV', 'Wagon'],
+          Car: ['', 'Convertible', 'Coupe', 'Crossover', 'Electric Car', 'Hatchback', 'Hybrid', 'Hypercar', 'Minivan', 'LCGC', 'Pickup', 'Sedan', 'SUV', 'Sport', 'Wagon'],
           Motorcycle: ['', 'Adventure Bike', 'Cruiser', 'Cub', 'Custom Bike', 'Dirt Bike', 'Electric Bike', 'Naked Bike', 'Touring Bike', 'Scooter', 'Sport Bike']
         };
 
